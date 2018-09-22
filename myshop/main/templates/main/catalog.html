@@ -108,8 +108,9 @@
                             {{product_category}}
                         </div>
                         <div class="row products_table">
-                            <div class="col-md-4 col-sm-6 col-xs-12 product_cell">
-                                {% for product, values in products.items %}
+
+                            {% for product, values in products.items %}
+                             <div class="col-md-4 col-sm-6 col-xs-12 product_cell">
                                 <div class="product_card">
                                     <img class="product_img" src={{values.img}} alt="">
                                     <div class="name_price">
@@ -128,8 +129,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                {% endfor %}
                             </div>
+                            {% endfor %}
                         </div>
                     </div>
                 {% endfor %}
