@@ -103,15 +103,20 @@
             <div class="col-md-8 col-sm-9 right_content">
 
                 {% for product_category, products in results.items %}
-                    <div class="category_1_products">
-                        <div class="products_header">
+                    <div class="category_products">
+                        <a href="#">
+                            <div class="products_header">
                             {{product_category}}
-                        </div>
+                            </div>
+                        </a>
                         <div class="row products_table">
-
                             {% for product, values in products.items %}
                              <div class="col-md-4 col-sm-6 col-xs-12 product_cell">
-                                <div class="product_card">
+                                {% if values.corner %}
+                                 <div class="product_card corner_{{values.corner}}">
+                                {% else %}
+                                 <div class="product_card">
+                                {% endif %}
                                     <img class="product_img" src={{values.img}} alt="">
                                     <div class="name_price">
                                         <div class="product_name">
@@ -135,7 +140,7 @@
                     </div>
                 {% endfor %}
 
-                <div class="category_2_products">
+                <div class="category_products">
                     <div class="products_header">
                         Category_2_products
                     </div>
@@ -201,7 +206,7 @@
 
                 </div>
 
-                <div class="category_3_products">
+                <div class="category_products">
                     <div class="products_header">
                         Category_3_products
                     </div>
