@@ -367,6 +367,16 @@
     margin-bottom: 15px;
 }
 
+.product_cell>a {
+    display: block;
+}
+
+.product_cell>a:focus,
+.product_cell>a:hover {
+    box-shadow: 0 0 30px;
+    text-decoration: None;
+}
+
 .product_card {
     display: block;
     background-color: #e6f0f1;

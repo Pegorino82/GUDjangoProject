@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from main.templates.main import catalogDB
+from tempDB import catalogDB, indexDB
 
 # Create your views here.
 
@@ -8,15 +8,10 @@ from django.http import HttpResponse, JsonResponse
 
 
 def index(request):
-    with open('main/templates/main/content.txt', 'r', encoding='utf-8') as f:
-        content = f.readlines()
-
     context = {
-        'results':
-            [(content[itm].strip(), content[itm + 1].strip()) for itm in range(0, len(content), 2)]
+        'results': indexDB.index
     }
 
-    # return JsonResponse(context)
     return render(request, 'main/index.html', context)
 
 
