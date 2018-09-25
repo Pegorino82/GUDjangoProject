@@ -112,167 +112,35 @@
                         <div class="row products_table">
                             {% for product, values in products.items %}
                              <div class="col-md-4 col-sm-6 col-xs-12 product_cell">
-                                {% if values.corner %}
-                                 <div class="product_card corner_{{values.corner}}">
-                                {% else %}
-                                 <div class="product_card">
-                                {% endif %}
-                                    <img class="product_img" src={{values.img}} alt="">
-                                    <div class="name_price">
-                                        <div class="product_name">
-                                            {{ values.name }}
-                                        </div>
-                                        <div class="product_price">
-                                            <div class="now_price">
-                                                ₽ {{ values.price.now }}
+                                 <a href="#">
+                                    {% if values.corner %}
+                                     <div class="product_card corner_{{values.corner}}">
+                                    {% else %}
+                                     <div class="product_card">
+                                    {% endif %}
+                                        <img class="product_img" src={{values.img}} alt="">
+                                        <div class="name_price">
+                                            <div class="product_name">
+                                                {{ values.name }}
                                             </div>
-                                            {% if values.price.old %}
-                                            <div class="old_price">
-                                                ₽ {{ values.price.old }}
+                                            <div class="product_price">
+                                                <div class="now_price">
+                                                    ₽ {{ values.price.now }}
+                                                </div>
+                                                {% if values.price.old %}
+                                                <div class="old_price">
+                                                    ₽ {{ values.price.old }}
+                                                </div>
+                                                {% endif %}
                                             </div>
-                                            {% endif %}
                                         </div>
-                                    </div>
-                                </div>
+                                     </div>
+                                 </a>
                             </div>
                             {% endfor %}
                         </div>
                     </div>
                 {% endfor %}
-
-                <div class="category_products">
-                    <div class="products_header">
-                        Category_2_products
-                    </div>
-                    <div class="row products_table">
-                        <div class="col-md-4 col-sm-6 col-xs-12 product_cell">
-                            <div class="product_card">
-                                <img class="product_img" src="/static/images/products/img_1.jpg" alt="">
-                                <!--<div class="product_img"></div>-->
-                                <div class="name_price">
-                                    <div class="product_name">
-                                        Product
-                                    </div>
-                                    <div class="product_price">
-                                        <div class="now_price">
-                                            ₽ 750
-                                        </div>
-                                        <div class="old_price">
-                                            ₽ 1500
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4 col-sm-6 col-xs-12 product_cell">
-                            <div class="product_card">
-                                <img class="product_img" src="/static/images/products/img_2.jpg" alt="">
-                                <!--<div class="product_img"></div>-->
-                                <div class="name_price">
-                                    <div class="product_name">
-                                        Product
-                                    </div>
-                                    <div class="product_price">
-                                        <div class="now_price">
-                                            ₽ 1000
-                                        </div>
-                                        <div class="old_price">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4 col-sm-6 col-xs-12 product_cell">
-                            <div class="product_card">
-                                <img class="product_img" src="/static/images/products/img_3.jpg" alt="">
-                                <!--<div class="product_img"></div>-->
-                                <div class="name_price">
-                                    <div class="product_name">
-                                        Product
-                                    </div>
-                                    <div class="product_price">
-                                        <div class="now_price">
-                                            ₽ 1000
-                                        </div>
-                                        <div class="old_price">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="category_products">
-                    <div class="products_header">
-                        Category_3_products
-                    </div>
-                    <div class="row products_table">
-                        <div class="col-md-4 col-sm-6 col-xs-12 product_cell">
-                            <div class="product_card">
-                                <img class="product_img" src="/static/images/products/img_4.jpg" alt="">
-                                <!--<div class="product_img"></div>-->
-                                <div class="name_price">
-                                    <div class="product_name">
-                                        Product
-                                    </div>
-                                    <div class="product_price">
-                                        <div class="now_price">
-                                            ₽ 750
-                                        </div>
-                                        <div class="old_price">
-                                            ₽ 1500
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4 col-sm-6 col-xs-12 product_cell">
-                            <div class="product_card">
-                                <img class="product_img" src="/static/images/products/img_5.jpg" alt="">
-                                <!--<div class="product_img"></div>-->
-                                <div class="name_price">
-                                    <div class="product_name">
-                                        Product
-                                    </div>
-                                    <div class="product_price">
-                                        <div class="now_price">
-                                            ₽ 750
-                                        </div>
-                                        <div class="old_price">
-                                            ₽ 1000
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4 col-sm-6 col-xs-12 product_cell">
-                            <div class="product_card">
-                                <img class="product_img" src="/static/images/products/img_6.jpg" alt="">
-                                <!--<div class="product_img"></div>-->
-                                <div class="name_price">
-                                    <div class="product_name">
-                                        Product
-                                    </div>
-                                    <div class="product_price">
-                                        <div class="now_price">
-                                            ₽ 1500
-                                        </div>
-                                        <div class="old_price">
-                                            ₽ 1000
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
 
             </div>
         </div>
