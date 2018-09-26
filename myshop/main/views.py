@@ -23,6 +23,13 @@ def catalog(request):
     return render(request, 'main/catalog.html', context)
 
 
+def product(request):
+    context ={
+
+    }
+
+    return render(request, 'main/product.html', context)
+
 def contacts(request):
     context = {
         'results': [

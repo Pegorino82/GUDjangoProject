@@ -114,12 +114,16 @@
                         <div class="row products_table">
                             {% for product, values in products.items %}
                              <div class="col-md-4 col-sm-6 col-xs-12 product_cell">
-                                 <a href="/product/">
-                                     <div class="product_card {{values.corner|default_if_none:''}}">
-                                        <img class="product_img" src={% static values.img %} alt="">
+                                 <a href="#">
+                                    {% if values.corner %}
+                                     <div class="product_card corner_{{values.corner}}">
+                                    {% else %}
+                                     <div class="product_card">
+                                    {% endif %}
+                                        <img class="product_img" src={{values.img}} alt="">
                                         <div class="name_price">
                                             <div class="product_name">
-                                                {{ values.name|title }}
+                                                {{ values.name }}
                                             </div>
                                             <div class="product_price">
                                                 <div class="now_price">
