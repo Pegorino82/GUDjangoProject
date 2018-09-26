@@ -3,78 +3,78 @@ from collections import OrderedDict
 catalog = OrderedDict({
     'products 1': {
         'product_1': {
-            'corner': 'new',
-            'img': '/static/images/products/img_1.jpg',
+            'corner': 'corner_new',
+            'img': '/images/products/img_1.jpg',
             'name': 'Product',
             'price': {'now': 1000, 'old': None}
         },
         'product_2': {
-            'corner': 'hot',
-            'img': '/static/images/products/img_2.jpg',
+            'corner': 'corner_hot',
+            'img': '/images/products/img_2.jpg',
             'name': 'Product',
             'price': {'now': 750, 'old': 1000}
         },
         'product_3': {
             'corner': None,
-            'img': '/static/images/products/img_3.jpg',
+            'img': '/images/products/img_3.jpg',
             'name': 'Product',
             'price': {'now': 1500, 'old': None}
         },
         'product_4': {
             'corner': None,
-            'img': '/static/images/products/img_4.jpg',
+            'img': '/images/products/img_4.jpg',
             'name': 'Product',
             'price': {'now': 1500, 'old': None}
         },
         'product_5': {
             'corner': None,
-            'img': '/static/images/products/img_5.jpg',
+            'img': '/images/products/img_5.jpg',
             'name': 'Product',
             'price': {'now': 1500, 'old': None}
         },
         'product_6': {
             'corner': None,
-            'img': '/static/images/products/img_6.jpg',
+            'img': '/images/products/img_6.jpg',
             'name': 'Product',
             'price': {'now': 1500, 'old': None}
         }
     },
     'products 2': {
         'product_1': {
-            'corner': 'new',
-            'img': '/static/images/products/img_1.jpg',
+            'corner': None,
+            'img': '/images/products/img_1.jpg',
             'name': 'Product',
             'price': {'now': 750, 'old': 1500}
         },
         'product_2': {
-            'corner': 'hot',
-            'img': '/static/images/products/img_2.jpg',
+            'corner': None,
+            'img': '/images/products/img_2.jpg',
             'name': 'Product',
             'price': {'now': 1000, 'old': None}
         },
         'product_3': {
             'corner': None,
-            'img': '/static/images/products/img_3.jpg',
+            'img': '/images/products/img_3.jpg',
             'name': 'Product',
             'price': {'now': 1000, 'old': None}
         }
     },
     'products 3': {
         'product_1': {
-            'corner': 'new',
-            'img': '/static/images/products/img_4.jpg',
+            'corner': None,
+            'img': '/images/products/img_4.jpg',
             'name': 'Product',
             'price': {'now': 750, 'old': 1500}
         },
         'product_2': {
-            'corner': 'hot',
-            'img': '/static/images/products/img_5.jpg',
+            'corner': None,
+            'img': '/images/products/img_5.jpg',
             'name': 'Product',
             'price': {'now': 1000, 'old': None}
         },
         'product_3': {
             'corner': None,
-            'img': '/static/images/products/img_6.jpg',
+            'img': '/images/products/img_6.jpg',
             'name': 'Product',
             'price': {'now': 1000, 'old': None}
         }
