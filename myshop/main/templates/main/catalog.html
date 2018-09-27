@@ -37,29 +37,10 @@
                 {% for product, values in products.items %}
 
                  <div class="col-md-4 col-sm-6 col-xs-12 product_cell">
-                     {% if product is int %}
-                     <a href="{% url 'product' category=product_category pk=product %}">
-                     {% endif %}
-                         <div class="product_card {{values.corner|default_if_none:''}}">
-                            <img class="product_img" src={% static values.img %} alt="">
-                            <div class="name_price">
-                                <div class="product_name">
-                                    {{ values.name|title }}
-                                </div>
-                                <div class="product_price">
-                                    <div class="now_price">
-                                        ₽ {{ values.price.now }}
-                                    </div>
-                                    {% if values.price.old %}
-                                    <div class="old_price">
-                                        ₽ {{ values.price.old }}
-                                    </div>
-                                    {% endif %}
-                                </div>
-                            </div>
-                         </div>
-                     </a>
-                </div>
+
+                     {% include 'main/components/product.html' with prd_ctgry=product_category prd_id=product prd=values %}
+
+                 </div>
 
                 {% endfor %}
             </div>
