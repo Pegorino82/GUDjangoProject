@@ -35,8 +35,11 @@
             </a>
             <div class="row products_table">
                 {% for product, values in products.items %}
+
                  <div class="col-md-4 col-sm-6 col-xs-12 product_cell">
+                     {% if product is int %}
                      <a href="{% url 'product' category=product_category pk=product %}">
+                     {% endif %}
                          <div class="product_card {{values.corner|default_if_none:''}}">
                             <img class="product_img" src={% static values.img %} alt="">
                             <div class="name_price">
@@ -57,6 +60,7 @@
                          </div>
                      </a>
                 </div>
+
                 {% endfor %}
             </div>
         </div>

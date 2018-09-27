@@ -16,14 +16,12 @@
 {% block small_menu_items %}
     <li><a class="menu_item" href="{% url 'index' %}">Main</a></li>
     <li><a class="menu_item" href="{% url 'catalog' %}">Catalog</a></li>
-    <li><a class="menu_item" href="#">Category</a></li>
     <li><a class="menu_item" href="{% url 'contacts' %}">Contacts</a></li>
 {% endblock %}
 
 {% block large_menu_items %}
     <a class="menu_item" href="{% url 'index' %}">Main</a>
     <a class="menu_item" href="{% url 'catalog' %}">Catalog</a>
-    <a class="menu_item" href="#">Category</a>
     <a class="menu_item" href="{% url 'contacts' %}">Contacts</a>
 {% endblock %}
 
@@ -32,8 +30,8 @@
         <div class="category_products">
 
             <div class="products_header">
-                {{ product.name }}
-                {{ category }}
+                {{ product.name }} /
+                <a href="{% url 'category' category=category %}">{{ category }}</a>
             </div>
 
             <div class="row products_table">

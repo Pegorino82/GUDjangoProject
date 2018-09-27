@@ -34,26 +34,28 @@
             </div>
 
             <div class="row products_table">
-                {% for product in products.values %}
-                 <div class="col-md-6 col-sm-6 col-xs-12 product_cell">
-                     <div class="product_card {{product.corner|default_if_none:''}}">
-                        <img class="product_img" src={% static product.img %} alt="">
-                        <div class="name_price">
-                            <div class="product_name">
-                                {{ product.name|title }}
-                            </div>
-                            <div class="product_price">
-                                <div class="now_price">
-                                    ₽ {{ product.price.now }}
+                {% for prod_id, product in products.items %}
+                 <div class="col-md-4 col-sm-6 col-xs-12 product_cell">
+                     <a href="{% url 'product' category=category pk=prod_id %}">
+                         <div class="product_card {{product.corner|default_if_none:''}}">
+                            <img class="product_img" src={% static product.img %} alt="">
+                            <div class="name_price">
+                                <div class="product_name">
+                                    {{ product.name|title }}
                                 </div>
-                                {% if product.price.old %}
-                                <div class="old_price">
-                                    ₽ {{ product.price.old }}
+                                <div class="product_price">
+                                    <div class="now_price">
+                                        ₽ {{ product.price.now }}
+                                    </div>
+                                    {% if product.price.old %}
+                                    <div class="old_price">
+                                        ₽ {{ product.price.old }}
+                                    </div>
+                                    {% endif %}
                                 </div>
-                                {% endif %}
                             </div>
-                        </div>
-                     </div>
+                         </div>
+                     </a>
                 </div>
                 {% endfor %}
             </div>

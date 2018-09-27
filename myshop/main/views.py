@@ -16,6 +16,7 @@ def index(request):
 
 
 def catalog(request):
+
     context = {
         'results': catalogDB.catalog
     }

@@ -91,17 +91,31 @@ catalog = OrderedDict({
     }
 })
 
+ammount_in_cat = {category: len(catalog[category].keys()) for category in catalog}
+page_content = {k: {p: i for p, i in list(v.items())[:5]} for k, v in catalog.items()}
+for category in page_content:
+    page_content[category].update({'number': ammount_in_cat[category]})
+
 if __name__ == '__main__':
-    def category(category):
-        context = {
-            'results': catalog
-        }
 
-        result = {
-            'category': category,
-            'products': context['results'][category]
-        }
+    # for k, v in catalog.items():
+    #     print(k)
+    #     for p, i in list(v.items())[:5]:
+    #         print(i)
 
-        return result['products']
+    # new = {k: {p: i for p, i in list(v.items())[:5]} for k, v in catalog.items()}
+    #
+    # for k, v in new.items():
+    #     print(k)
+    #     for p, i in v.items():
+    #         print(p, i)
 
-    print(category('products_1'))
+    ammount_in_cat = {category: len(catalog[category].keys()) for category in catalog}
+    page_content = {k: {p: i for p, i in list(v.items())[:5]} for k, v in catalog.items()}
+    for category in page_content:
+        page_content[category].update({'ammount': ammount_in_cat[category]})
+
+    for k, v in page_content.items():
+        print(k)
+        for i, t in v.items():
+            print(i, t)
