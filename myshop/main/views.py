@@ -23,13 +23,26 @@ def catalog(request):
     return render(request, 'main/catalog.html', context)
 
 
-def product(request, category, pk):
-
+def category(request, category):
     context = {
         'results': catalogDB.catalog
     }
 
-    # category = 'products_1'
+    result = {
+        'category': category,
+        'products': context['results'][category]
+    }
+
+    return render(request,
+                  'main/category.html',
+                  result
+                  )
+
+
+def product(request, category, pk):
+    context = {
+        'results': catalogDB.catalog
+    }
 
     result = {
         'category': category,
@@ -40,6 +53,7 @@ def product(request, category, pk):
                   'main/product.html',
                   result
                   )
+
 
 def contacts(request):
     context = {

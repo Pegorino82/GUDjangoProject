@@ -28,7 +28,7 @@
 {% block right_content %}
     {% for product_category, products in results.items %}
         <div class="category_products">
-            <a href="#">
+            <a href="{% url 'category' category=product_category %}">
                 <div class="products_header">
                 {{product_category}}
                 </div>
