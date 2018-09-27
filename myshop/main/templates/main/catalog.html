@@ -14,15 +14,15 @@
 {% endblock %}
 
 {% block small_menu_items %}
-    <li><a class="menu_item" href="/index/">Main</a></li>
-    <li><a class="menu_item" href="/catalog/">Catalog</a></li>
-    <li><a class="menu_item" href="/contacts/">Contacts</a></li>
+    <li><a class="menu_item" href="{% url 'index' %}">Main</a></li>
+    <li><a class="menu_item" href="{% url 'catalog' %}">Catalog</a></li>
+    <li><a class="menu_item" href="{% url 'contacts' %}">Contacts</a></li>
 {% endblock %}
 
 {% block large_menu_items %}
-    <a class="menu_item" href="/index/">Main</a>
-    <a class="menu_item" href="/catalog/">Catalog</a>
-    <a class="menu_item" href="/contacts/">Contacts</a>
+    <a class="menu_item" href="{% url 'index' %}">Main</a>
+    <a class="menu_item" href="{% url 'catalog' %}">Catalog</a>
+    <a class="menu_item" href="{% url 'contacts' %}">Contacts</a>
 {% endblock %}
 
 {% block right_content %}
@@ -36,7 +36,7 @@
             <div class="row products_table">
                 {% for product, values in products.items %}
                  <div class="col-md-4 col-sm-6 col-xs-12 product_cell">
-                     <a href="/product/">
+                     <a href="{% url 'product' category=product_category pk=product %}">
                          <div class="product_card {{values.corner|default_if_none:''}}">
                             <img class="product_img" src={% static values.img %} alt="">
                             <div class="name_price">

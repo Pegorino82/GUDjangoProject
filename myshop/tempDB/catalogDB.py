@@ -1,78 +1,88 @@
 from collections import OrderedDict
 
+'''
+{product_category: {
+    product_id: {
+        product info
+                }
+    }
+}
+'''
+
 catalog = OrderedDict({
-    'products 1': {
-        'product_1': {
+    'products_1': {
+        1: {
             'corner': 'corner_new',
             'img': '/images/products/img_1.jpg',
             'name': 'Product',
-            'price': {'now': 1000, 'old': None}
+            'price': {'now': 1000, 'old': None},
+            'text': 'b'
         },
-        'product_2': {
+        2: {
             'corner': 'corner_hot',
             'img': '/images/products/img_2.jpg',
             'name': 'Product',
             'price': {'now': 750, 'old': 1000}
         },
-        'product_3': {
+        3: {
             'corner': None,
             'img': '/images/products/img_3.jpg',
             'name': 'Product',
             'price': {'now': 1500, 'old': None}
         },
-        'product_4': {
+        4: {
             'corner': None,
             'img': '/images/products/img_4.jpg',
             'name': 'Product',
             'price': {'now': 1500, 'old': None}
         },
-        'product_5': {
+        5: {
             'corner': None,
             'img': '/images/products/img_5.jpg',
             'name': 'Product',
             'price': {'now': 1500, 'old': None}
         },
-        'product_6': {
+        6: {
             'corner': None,
             'img': '/images/products/img_6.jpg',
             'name': 'Product',
             'price': {'now': 1500, 'old': None}
         }
     },
-    'products 2': {
-        'product_1': {
+    'products_2': {
+        7: {
             'corner': None,
             'img': '/images/products/img_1.jpg',
             'name': 'Product',
             'price': {'now': 750, 'old': 1500}
         },
-        'product_2': {
+        8: {
             'corner': None,
             'img': '/images/products/img_2.jpg',
             'name': 'Product',
             'price': {'now': 1000, 'old': None}
         },
-        'product_3': {
+        9: {
             'corner': None,
             'img': '/images/products/img_3.jpg',
             'name': 'Product',
             'price': {'now': 1000, 'old': None}
         }
     },
-    'products 3': {
-        'product_1': {
+    'products_3': {
+        10: {
             'corner': None,
             'img': '/images/products/img_4.jpg',
             'name': 'Product',
             'price': {'now': 750, 'old': 1500}
         },
-        'product_2': {
+        11: {
             'corner': None,
             'img': '/images/products/img_5.jpg',
             'name': 'Product',
             'price': {'now': 1000, 'old': None}
         },
-        'product_3': {
+        12: {
             'corner': None,
             'img': '/images/products/img_6.jpg',
             'name': 'Product',
@@ -82,8 +92,7 @@ catalog = OrderedDict({
 })
 
 if __name__ == '__main__':
-    print(catalog.keys())
-    # print(catalog.values())
+    print(list(catalog.keys())[0])
     for val in catalog.values():
         for prod in val:
             print(prod, val[prod])
