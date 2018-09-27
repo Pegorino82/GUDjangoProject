@@ -101,8 +101,8 @@
 
 .logo {
     background: url("../images/_myshop_logo.png") no-repeat;
-    height: 111px;
-    width: 125px;
+    height: 90px;
+    width: 81px;
     display: block;
     position: absolute;
     top: 24px;
@@ -226,7 +226,11 @@
     .gonowbutton {
         margin: 15px auto 0;
         top: 620px;
+<<<<<<< HEAD
         /*right: unset;*/
+=======
+        right: 15px;
+>>>>>>> lesson_2
     }
 }
 
@@ -334,9 +338,9 @@
 }
 
 .main_section:after,
-.category_1_products:after,
-.category_1_products:after,
-.category_1_products:after {
+.category_products:after,
+.category_products:after,
+.category_products:after {
     display: block;
     content: '';
     clear: both;
@@ -346,6 +350,15 @@
     .category_1_products {
         margin-top: 15px;
     }
+}
+
+.category_products a {
+    display: block;
+}
+
+.category_products a:hover,
+.category_products a:focus {
+    text-decoration: None;
 }
 
 .main_section_header,
@@ -362,7 +375,17 @@
     margin-bottom: 15px;
 }
 
+.product_cell>a {
+    display: block;
+}
+
+.product_cell>a:hover {
+    box-shadow: 0 0 30px;
+    text-decoration: None;
+}
+
 .product_card {
+    display: block;
     background-color: #e6f0f1;
     padding: 10px;
     box-sizing: border-box;
@@ -398,7 +421,7 @@
 }
 
 .product_name {
-    width: 135px;
+    width: 110px;
     font-family: "Roboto Black Italic", sans-serif;
     font-size: 14px;
     max-height: 2.5em;
