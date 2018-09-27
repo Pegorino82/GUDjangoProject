@@ -47,7 +47,8 @@ def product(request, category, pk):
 
     result = {
         'category': category,
-        'product': context['results'][category][pk]
+        'product': context['results'][category][pk],
+        'pk': pk
     }
 
     return render(request,
@@ -56,13 +57,13 @@ def product(request, category, pk):
                   )
 
 
-def contacts(request):
-    context = {
-        'results': [
-            'one',
-            'two',
-            'three',
-        ]
-    }
-
-    return render(request, 'main/contacts.html', context)
+# def contacts(request):
+#     context = {
+#         'results': [
+#             'one',
+#             'two',
+#             'three',
+#         ]
+#     }
+#
+#     return render(request, 'main/contacts.html', context)

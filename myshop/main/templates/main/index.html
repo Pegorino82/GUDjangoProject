@@ -14,15 +14,15 @@
 {% endblock %}
 
 {% block small_menu_items %}
-    <li><a class="menu_item" href="{% url 'index' %}">Main</a></li>
-    <li><a class="menu_item" href="{% url 'catalog' %}">Catalog</a></li>
-    <li><a class="menu_item" href="{% url 'contacts' %}">Contacts</a></li>
+    <li><a class="menu_item" href="{% url 'mainapp:index' %}">Main</a></li>
+    <li><a class="menu_item" href="{% url 'mainapp:catalog' %}">Catalog</a></li>
+    <li><a class="menu_item" href="{% url 'contactsapp:contacts' %}">Contacts</a></li>
 {% endblock %}
 
 {% block large_menu_items %}
-    <a class="menu_item" href="{% url 'index' %}">Main</a>
-    <a class="menu_item" href="{% url 'catalog' %}">Catalog</a>
-    <a class="menu_item" href="{% url 'contacts' %}">Contacts</a>
+    <a class="menu_item" href="{% url 'mainapp:index' %}">Main</a>
+    <a class="menu_item" href="{% url 'mainapp:catalog' %}">Catalog</a>
+    <a class="menu_item" href="{% url 'contactsapp:contacts' %}">Contacts</a>
 {% endblock %}
 
 {% block right_content %}

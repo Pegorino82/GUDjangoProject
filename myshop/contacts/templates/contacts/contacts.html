@@ -7,22 +7,22 @@
 {% endblock %}
 
 {% block bootstrap_css %}
-    <link href="{% static 'main/packages/bootstrap-3.3.7-dist/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'contacts/packages/bootstrap-3.3.7-dist/css/bootstrap.min.css' %}" rel="stylesheet">
 {% endblock %}
 {% block style_css %}
-    <link rel="stylesheet" href="{% static 'main/styles/style.css' %}">
+    <link rel="stylesheet" href="{% static 'contacts/styles/style.css' %}">
 {% endblock %}
 
 {% block small_menu_items %}
-    <li><a class="menu_item" href="{% url 'index' %}">Main</a></li>
-    <li><a class="menu_item" href="{% url 'catalog' %}">Catalog</a></li>
-    <li><a class="menu_item" href="{% url 'contacts' %}">Contacts</a></li>
+    <li><a class="menu_item" href="{% url 'mainapp:index' %}">Main</a></li>
+    <li><a class="menu_item" href="{% url 'mainapp:catalog' %}">Catalog</a></li>
+    <li><a class="menu_item" href="{% url 'contactsapp:contacts' %}">Contacts</a></li>
 {% endblock %}
 
 {% block large_menu_items %}
-    <a class="menu_item" href="{% url 'index' %}">Main</a>
-    <a class="menu_item" href="{% url 'catalog' %}">Catalog</a>
-    <a class="menu_item" href="{% url 'contacts' %}">Contacts</a>
+    <a class="menu_item" href="{% url 'mainapp:index' %}">Main</a>
+    <a class="menu_item" href="{% url 'mainapp:catalog' %}">Catalog</a>
+    <a class="menu_item" href="{% url 'contactsapp:contacts' %}">Contacts</a>
 {% endblock %}
 
 {% block right_content %}
@@ -57,5 +57,5 @@
 {% endblock %}
 
 {% block bootstrap_js %}
-    <script src="{% static 'main/packages/bootstrap-3.3.7-dist/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'contactspackages/bootstrap-3.3.7-dist/js/bootstrap.min.js' %}"></script>
 {% endblock %}
