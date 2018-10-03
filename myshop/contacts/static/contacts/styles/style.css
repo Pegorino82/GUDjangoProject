@@ -352,13 +352,27 @@
     }
 }
 
-.category_products a {
+.category_products > a {
     display: block;
+}
+
+.category_products > a:hover {
+    box-shadow: 0 0 30px;
+    text-decoration: None;
 }
 
 .category_products a:hover,
 .category_products a:focus {
     text-decoration: None;
+}
+
+.category_products .products_header a {
+    display: inline;
+    color: #707070;
+}
+
+.category_products .products_header a:hover {
+    color: #f0f8ff;
 }
 
 .main_section_header,
@@ -485,6 +499,12 @@
     }
 }
 
+.product_describe {
+    font-family: "Roboto Regular", sans-serif;
+    font-style: italic;
+    font-size: 14px;
+    color: #333333;
+}
 
 .brands {
     display: flex;
