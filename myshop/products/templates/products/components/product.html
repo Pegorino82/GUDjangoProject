@@ -1,19 +1,19 @@
 {% load static %}
 
 <a href="{% url 'productsapp:product' category=prd_ctgry pk=prd_id %}">
-     <div class="product_card {{prd.corner|default_if_none:''}}">
-        <img class="product_img" src={% static prd.img %} alt="">
+     <div class="product_card {{prd.product_marker|default_if_none:''}}">
+        <img class="product_img" src={% static prd.image.img %} alt="">
         <div class="name_price">
             <div class="product_name">
                 {{ prd.name|title }}
             </div>
             <div class="product_price">
                 <div class="now_price">
-                    ₽ {{ prd.price.now }}
+                    ₽ {{ prd.now_price }}
                 </div>
-                {% if prd.price.old %}
+                {% if prd.old_price %}
                 <div class="old_price">
-                    ₽ {{ prd.price.old }}
+                    ₽ {{ prd.old_price }}
                 </div>
                 {% endif %}
             </div>

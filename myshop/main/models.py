@@ -17,7 +17,7 @@ class Author(models.Model):
 
 class MainPageContent(models.Model):
     chapter = models.CharField(max_length=150)
-    content = models.CharField(max_length=500)
+    content = models.CharField(max_length=1000)
     date = models.DateTimeField()
     author = models.ForeignKey(
         'main.Author',

@@ -10,7 +10,7 @@ from collections import OrderedDict
 '''
 
 catalog = OrderedDict({
-    'products_1': {
+    'Category_1': {
         1: {
             'corner': 'corner_new',
             'img': 'main/images/products/img_1.jpg',

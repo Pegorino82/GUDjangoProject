@@ -1,14 +1,11 @@
 from django.shortcuts import render
 
-from tempDB import indexDB
-
-
-# Create your views here.
+from .models import MainPageContent, Author
 
 
 def index(request):
     context = {
-        'results': indexDB.index
+        'results': MainPageContent.objects.all()
     }
 
     return render(request, 'main/index.html', context)
