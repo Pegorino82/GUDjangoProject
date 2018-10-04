@@ -34,10 +34,10 @@
             </div>
 
             <div class="row products_table">
-                {% for prod_id, product in products.items %}
+                {% for product in products %}
                  <div class="col-md-4 col-sm-6 col-xs-12 product_cell">
 
-                     {% include 'products/components/product.html' with prd_ctgry=category prd_id=prod_id prd=product %}
+                     {% include 'products/components/product.html' with prd_ctgry=category prd_id=product.id prd=product %}
 
                 </div>
                 {% endfor %}

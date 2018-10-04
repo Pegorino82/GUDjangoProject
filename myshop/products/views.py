@@ -1,31 +1,23 @@
 from django.shortcuts import render
 
-from .models import Category, ProductMarker, Image, Product
-
-from tempDB import catalogDB, indexDB
-
-# Create your views here.
-
-from django.http import HttpResponse, JsonResponse
+from .models import Category, Product
 
 
 def catalog(request):
     context = {
-        'results': catalogDB.catalog,
-        'res': Product.objects.first()
+        'categories': Category.objects.all(),
+        'products': Product.objects.all()
     }
 
     return render(request, 'products/catalog.html', context)
 
 
 def category(request, category):
-    context = {
-        'results': catalogDB.catalog
-    }
+    category_id = Category.objects.get(title=category).id
 
     result = {
         'category': category,
-        'products': context['results'][category]
+        'products': Product.objects.filter(category=category_id)
     }
 
     return render(request,
@@ -35,11 +27,10 @@ def category(request, category):
 
 
 def product(request, category, pk):
-
     result = {
         'category': category,
-        'product': Product.objects.get(id=pk),
-        'pk': pk
+        'pk': pk,
+        'product': Product.objects.get(id=pk)
     }
 
     return render(request,
