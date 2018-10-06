@@ -26,17 +26,19 @@
 {% endblock %}
 
 {% block right_content %}
-    {% for title, content in results.items %}
+    {% for content in results %}
         <div class="main_section">
             <div class="main_section_header">
-                {{ title}}
+                {{ content.chapter }}
             </div>
              <div class="main_section_img">
 
              </div>
              <div class="row main_section_content">
-                 {{ content }}
+                 {{ content.content }}
              </div>
+            <span>By {{ content.author }},</span>
+            <span>{{ content.date.date }}</span>
         </div>
     {% endfor %}
 {% endblock %}
