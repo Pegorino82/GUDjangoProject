@@ -1,7 +1,6 @@
 from django.db import models
+from django.db.models import Q, QuerySet
 
-
-# Create your models here.
 
 class Category(models.Model):
     title = models.CharField(max_length=150)
@@ -57,3 +56,25 @@ class Product(models.Model):
         'products.Image',
         on_delete=models.CASCADE
     )
+
+    def __str__(self):
+        return self.name
+
+    # @classmethod
+    # def get_limit(cls, limit):
+    #     categories = Category.objects.all()
+    #     res = {key: [] for key in dict.fromkeys(categories).keys()}
+    #     for cat in categories:
+    #         res[cat].append(cls.objects.filter(category=cat.id)[:limit])
+    #
+    #     return res
+
+    @classmethod
+    def get_limit(cls, limit):
+        categories = Category.objects.all()
+        res = list()
+        for cat in categories:
+            for prod in cls.objects.filter(category=cat.id)[:limit]:
+                res.append(prod)
+
+        return res

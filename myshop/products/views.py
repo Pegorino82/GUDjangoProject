@@ -6,7 +6,8 @@ from .models import Category, Product
 def catalog(request):
     context = {
         'categories': Category.objects.all(),
-        'products': Product.objects.all()
+        'products': Product.objects.all(),
+        'limit_products': Product.get_limit(5)
     }
 
     return render(request, 'products/catalog.html', context)
@@ -17,7 +18,8 @@ def category(request, category):
 
     result = {
         'category': category,
-        'products': Product.objects.filter(category=category_id)
+        'products': Product.objects.filter(category=category_id),
+        'categories': Category.objects.all()
     }
 
     return render(request,
@@ -30,7 +32,8 @@ def product(request, category, pk):
     result = {
         'category': category,
         'pk': pk,
-        'product': Product.objects.get(id=pk)
+        'product': Product.objects.get(id=pk),
+        'categories': Category.objects.all()
     }
 
     return render(request,

@@ -287,6 +287,32 @@
     margin-top: -2px;
 }
 
+.submenu {
+    margin-left: 5px;
+    list-style: none;
+    /*display: none;*/
+}
+
+.submenu a {
+    display: block;
+    font-family: "Roboto Black", sans-serif;
+    line-height: 30px;
+    list-style: none;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #000000;
+}
+
+.submenu a:hover {
+    text-decoration: none;
+    background-color: #333333;
+    color: #ffffff;
+}
+
+.menu_item:hover .submenu li {
+    display: block;
+}
+
 .left_banner {
     display: block;
     height: 300px;
