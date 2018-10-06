@@ -2,12 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2a766922-2715-4933-95ed-7bf0336000a2" name="Default Changelist" comment="">
+<<<<<<< Updated upstream
       <change beforePath="$PROJECT_DIR$/.idea/HomeWorkThis.iml" afterPath="$PROJECT_DIR$/.idea/HomeWorkThis.iml" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/myshop/main/static/main/styles/style.css" afterPath="$PROJECT_DIR$/myshop/main/static/main/styles/style.css" />
       <change beforePath="$PROJECT_DIR$/myshop/main/templates/main/content.txt" afterPath="" />
       <change beforePath="$PROJECT_DIR$/myshop/main/views.py" afterPath="$PROJECT_DIR$/myshop/main/views.py" />
+=======
+      <change beforePath="$PROJECT_DIR$/myshop/mainappmigrations.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/myshop/productsappmigrations.txt" afterPath="" />
+>>>>>>> Stashed changes
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -67,8 +72,13 @@
           <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/myshop/main/views.py">
               <provider selected="true" editor-type-id="text-editor">
+<<<<<<< Updated upstream
                 <state relative-caret-position="340">
                   <caret line="26" column="14" lean-forward="false" selection-start-line="26" selection-start-column="14" selection-end-line="26" selection-end-column="14" />
+=======
+                <state relative-caret-position="1003">
+                  <caret line="60" column="24" lean-forward="true" selection-start-line="60" selection-start-column="24" selection-end-line="60" selection-end-column="24" />
+>>>>>>> Stashed changes
                   <folding>
                     <element signature="e#0#35#0" expanded="true" />
                   </folding>
@@ -175,6 +185,7 @@
         <option value="$PROJECT_DIR$/myshop/main/templates/main/catalogDB.py" />
         <option value="$PROJECT_DIR$/myshop/tempDB/indexDB.py" />
         <option value="$PROJECT_DIR$/myshop/static/styles/style.css" />
+<<<<<<< Updated upstream
         <option value="$PROJECT_DIR$/myshop/main/urls.py" />
         <option value="$PROJECT_DIR$/myshop/tempDB/catalogDB.py" />
         <option value="$PROJECT_DIR$/myshop/myshop/settings.py" />
@@ -185,6 +196,26 @@
         <option value="$PROJECT_DIR$/myshop/main/templates/main/product.html" />
         <option value="$PROJECT_DIR$/myshop/main/views.py" />
         <option value="$PROJECT_DIR$/myshop/main/static/main/styles/style.css" />
+=======
+        <option value="$PROJECT_DIR$/myshop/products/templates/products/catalog.html" />
+        <option value="$PROJECT_DIR$/myshop/products/static/products/styles/style.css" />
+        <option value="$PROJECT_DIR$/myshop/products/templates/products/category.html" />
+        <option value="$PROJECT_DIR$/myshop/products/templates/products/product.html" />
+        <option value="$PROJECT_DIR$/myshop/products/migrations/0006_auto_20181006_1112.py" />
+        <option value="$PROJECT_DIR$/myshop/products/migrations/0007_auto_20181006_1112.py" />
+        <option value="$PROJECT_DIR$/myshop/products/models.py" />
+        <option value="$PROJECT_DIR$/myshop/products/migrations/0008_auto_20181006_1345.py" />
+        <option value="$PROJECT_DIR$/myshop/tempDB/mainpage.py" />
+        <option value="$PROJECT_DIR$/myshop/tempDB/main_data_1.txt" />
+        <option value="$PROJECT_DIR$/myshop/tempDB/main_data_2.txt" />
+        <option value="$PROJECT_DIR$/myshop/products/migrations/ts.py" />
+        <option value="$PROJECT_DIR$/myshop/products/migrations/0002_auto_20181006_1356.py" />
+        <option value="$PROJECT_DIR$/myshop/main/migrations/0005_auto_20181006_1523.py" />
+        <option value="$PROJECT_DIR$/myshop/products/migrations/0001_initial.py" />
+        <option value="$PROJECT_DIR$/myshop/main/migrations/0001_initial.py" />
+        <option value="$PROJECT_DIR$/myshop/main/migrations/0002_auto_20181006_1546.py" />
+        <option value="$PROJECT_DIR$/myshop/products/migrations/0002_auto_20181006_1546.py" />
+>>>>>>> Stashed changes
       </list>
     </option>
   </component>
@@ -379,6 +410,7 @@
               <item name="GUDjangoProject.git" type="462c0819:PsiDirectoryNode" />
               <item name="myshop" type="462c0819:PsiDirectoryNode" />
             </path>
+<<<<<<< Updated upstream
             <path>
               <item name="GUDjangoProject.git" type="b2602c69:ProjectViewProjectNode" />
               <item name="GUDjangoProject.git" type="462c0819:PsiDirectoryNode" />
@@ -436,6 +468,8 @@
               <item name="myshop" type="462c0819:PsiDirectoryNode" />
               <item name="tempDB" type="462c0819:PsiDirectoryNode" />
             </path>
+=======
+>>>>>>> Stashed changes
           </expand>
           <select />
         </subPane>
@@ -495,7 +529,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13690476" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -504,7 +537,12 @@
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+<<<<<<< Updated upstream
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+=======
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19598766" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+>>>>>>> Stashed changes
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -527,6 +565,7 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+<<<<<<< Updated upstream
     <entry file="file://$PROJECT_DIR$/myshop/main/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
@@ -538,6 +577,10 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/myshop/myshop/settings.py">
+=======
+    <entry file="file://$PROJECT_DIR$/myshop/products/migrations/0004_product.py" />
+    <entry file="file://$PROJECT_DIR$/myshop/tempDB/indexDB.py">
+>>>>>>> Stashed changes
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="986">
           <caret line="58" column="58" lean-forward="false" selection-start-line="58" selection-start-column="58" selection-end-line="58" selection-end-column="58" />
@@ -752,10 +795,49 @@
         </state>
       </provider>
     </entry>
+<<<<<<< Updated upstream
     <entry file="file://$PROJECT_DIR$/myshop/myshop/templates/myshop/base.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1751">
           <caret line="103" column="25" lean-forward="false" selection-start-line="103" selection-start-column="25" selection-end-line="103" selection-end-column="25" />
+=======
+    <entry file="file://$PROJECT_DIR$/myshop/main/migrations/0001_initial.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="58" column="5" lean-forward="true" selection-start-line="49" selection-start-column="4" selection-end-line="58" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myshop/products/migrations/0001_initial.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="237">
+          <caret line="85" column="5" lean-forward="true" selection-start-line="68" selection-start-column="4" selection-end-line="85" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myshop/products/migrations/0002_auto_20181006_1546.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="49" lean-forward="false" selection-start-line="13" selection-start-column="49" selection-end-line="13" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myshop/main/migrations/0002_auto_20181006_1546.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="354">
+          <caret line="59" column="5" lean-forward="false" selection-start-line="59" selection-start-column="5" selection-end-line="59" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myshop/products/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1003">
+          <caret line="60" column="24" lean-forward="true" selection-start-line="60" selection-start-column="24" selection-end-line="60" selection-end-column="24" />
+>>>>>>> Stashed changes
           <folding>
             <element signature="n#div#2;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#div#3;n#body#0;n#html#0;n#!!top" expanded="false" />
