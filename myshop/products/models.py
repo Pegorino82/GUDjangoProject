@@ -29,20 +29,6 @@ class ProductMarker(models.Model):
         return self.corner
 
 
-class Image(models.Model):
-    '''переделать на работу с медиафайлами'''
-    img = models.CharField(
-        max_length=250,
-        null=True,
-        blank=True,
-        unique=True
-    )
-
-    def __str__(self):
-        if self.img:
-            return self.img.split('/')[-1]
-
-
 class Product(models.Model):
     name = models.CharField(
         max_length=150,
@@ -73,7 +59,7 @@ class Product(models.Model):
         on_delete=models.CASCADE
     )
     image = models.ForeignKey(
-        'products.Image',
+        'images.Image',
         on_delete=models.PROTECT
     )
     created = models.DateTimeField(auto_now_add=True)
