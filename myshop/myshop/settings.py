@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'main',
     'contacts',
     'products',
+    'images',
 ]
 
 MIDDLEWARE = [
