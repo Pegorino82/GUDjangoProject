@@ -18,7 +18,6 @@ class Command(BaseCommand):
 
         # path = os.path.join(settings.MEDIA_ROOT, imgs_dir)
         path = os.path.join(settings.BASE_DIR, imgs_dir)
-        # path = 'D:\GeekUniversity\Django_1'
         file_list = os.listdir(path)
 
         if options['del']:
