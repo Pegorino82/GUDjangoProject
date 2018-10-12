@@ -18,6 +18,17 @@ class Command(BaseCommand):
             categories = Category.objects.all()
             markers = ProductMarker.objects.all()
 
+            if not categories:
+                ctgrs = ['Category_' + str(i) for i in range(1, 11)]
+                for category in ctgrs:
+                    cat = Category(category)
+                    cat.save()
+
+            if not markers:
+                for marker in ['corner_new', 'corner_hot', 'None']
+                    mark = ProductMarker(marker)
+                    mark.save()
+
             import random
             products = []
             ammount = options['random']

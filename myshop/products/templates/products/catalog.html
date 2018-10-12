@@ -7,34 +7,23 @@
 {% endblock %}
 
 {% block bootstrap_css %}
-    <link href="{% static 'products/packages/bootstrap-3.3.7-dist/css/bootstrap.min.css' %}" rel="stylesheet">
 {% endblock %}
 {% block style_css %}
-    <link rel="stylesheet" href="{% static 'products/styles/style.css' %}">
 {% endblock %}
 
 {% block small_menu_items %}
-    <li><a class="menu_item" href="{% url 'mainapp:index' %}">Main</a></li>
-    <li><a class="menu_item" href="{% url 'productsapp:catalog' %}">Catalog</a></li>
-        <ul class="submenu">
-            {% for category in categories %}
-            <li><a href="{% url 'productsapp:category' category=category.title %}">{{category.title}}</a></li>
-            {% endfor %}
-        </ul>
-    <li><a class="menu_item" href="{% url 'contactsapp:contacts' %}">Contacts</a></li>
+   <ul class="submenu">
+        {% for category in categories %}
+        <li><a href="{% url 'productsapp:category' category=category.title %}">{{category.title}}</a></li>
+        {% endfor %}
+    </ul>
 {% endblock %}
 
 {% block large_menu_items %}
-    <ul>
-        <li><a class="menu_item" href="{% url 'mainapp:index' %}">Main</a></li>
-        <li><a class="menu_item" href="{% url 'productsapp:catalog' %}">Catalog</a>
-            <ul class="submenu">
-                {% for category in categories %}
-                <li><a href="{% url 'productsapp:category' category=category.title %}">{{category.title}}</a></li>
-                {% endfor %}
-            </ul>
-        </li>
-        <li><a class="menu_item" href="{% url 'contactsapp:contacts' %}">Contacts</a></li>
+    <ul class="submenu">
+        {% for category in categories %}
+        <li><a href="{% url 'productsapp:category' category=category.title %}">{{category.title}}</a></li>
+        {% endfor %}
     </ul>
 {% endblock %}
 
