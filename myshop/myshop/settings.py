@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'products',
     'images',
     'customers',
+    'myshopadmin',
 ]
 
 MIDDLEWARE = [

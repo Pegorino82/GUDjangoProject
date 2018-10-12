@@ -5,7 +5,7 @@ from .models import Customer
 
 
 def login_view(request):
-    print(request.POST)
+    # print(request.POST)
     notification = {}
     if request.method == 'POST':
         usr_name = request.POST.get('username')
@@ -48,17 +48,5 @@ def login_view(request):
                     'user_name': usr_name,
                     'warn': 'Name is occupied! Choose another'
                 }
-
-    return render(request, 'customers/customer.html', notification)
-
-
-def logout_view(request):
-    pass
-
-    print(request.POST)
-    notification = {}
-
-    if request.POST.get('exit'):
-        pass
 
     return render(request, 'customers/customer.html', notification)
