@@ -16,7 +16,8 @@
     <link href="{% static 'myshopadmin/packages/bootstrap-3.3.7-dist/css/bootstrap.min.css' %}" rel="stylesheet">
     {% block bootstrap_css %}
     {% endblock %}
-    <link rel="stylesheet" href="{% static 'myshopadmin/styles/style.css' %}">
+
+    <link href="{% static 'myshopadmin/styles/style.css' %}" rel="stylesheet">
 
     {% block style_css %}
     {% endblock %}
@@ -77,19 +78,14 @@
             <div class="col-md-4 col-sm-3 left_content">
                 <div class="menu hidden-xs">
                     <div class="menu_title">
-                        Menu
+                        Models
                     </div>
-
                     <ul>
-                        <li><a class="menu_item" href="{% url 'mainapp:index' %}">Main</a></li>
-                        <li><a class="menu_item" href="{% url 'customersapp:login_view' %}">Customer</a></li>
-                        <li><a class="menu_item" href="{% url 'productsapp:catalog' %}">Catalog</a>
-                            {% block large_menu_items %}
-                            {% endblock %}
-                        </li>
-                        <li><a class="menu_item" href="{% url 'contactsapp:contacts' %}">Contacts</a></li>
-                    </ul>
+                        <li><a class="menu_item" href="{% url 'myshopadminapp:index' %}">To models</a></li>
+                        {% block large_menu_items %}
 
+                        {% endblock %}
+                    </ul>
                 </div>
 
             </div>

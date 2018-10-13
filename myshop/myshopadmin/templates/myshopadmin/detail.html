@@ -1,10 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'myshopadmin/base.html' %}
 
-</body>
-</html>
+{% load staticfiles %}
+
+{% block page_title %}
+Admin/Create
+{% endblock %}
+
+
+{% block style_css %}
+{% endblock %}
+
+{% block right_content %}
+
+    {% include 'myshopadmin/components/product.html' with prd=object %}
+
+    {{ product }}
+
+{% endblock %}

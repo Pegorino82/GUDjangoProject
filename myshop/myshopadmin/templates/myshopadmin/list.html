@@ -9,3 +9,15 @@ Admin/List
 
 {% block style_css %}
 {% endblock %}
+
+{% block large_menu_items %}
+
+{% endblock %}
+
+{% block right_content %}
+
+    {% for item in results%}
+    {% include 'myshopadmin/components/product.html' with prd=item %}
+    {% endfor %}
+
+{% endblock %}

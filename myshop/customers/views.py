@@ -18,6 +18,7 @@ def login_view(request):
             if user and user.is_active:
                 login(request, user)
 
+
             else:
                 notification = {
                     'user_name': usr_name,
