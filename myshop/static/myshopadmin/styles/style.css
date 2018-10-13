@@ -40,7 +40,7 @@
 
 
 .header {
-    height: 700px;
+    height: 250px;
     background-color: #abeafa;
     /*background: url("../images/background_2.png") center center;*/
 }
@@ -260,7 +260,8 @@
 
 .name-avatar {
     position: absolute;
-    bottom: -640px;
+    right: 30px;
+    top: 90px;
 }
 
 .content {

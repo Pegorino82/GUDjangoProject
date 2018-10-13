@@ -40,7 +40,7 @@
 
 
 .header {
-    height: 700px;
+    height: 250px;
     background-color: #abeafa;
     /*background: url("../images/background_2.png") center center;*/
 }
@@ -237,23 +237,6 @@
     text-decoration: none;
 }
 
-.adminbutton {
-    display: block;
-    position: relative;
-    width: 90px;
-    height: 30px;
-    left: 140px;
-    top: 599px;
-    background-color: #fff51f;
-    font-family: "Raleway Black", sans-serif;
-    font-size: 14px;
-    color: #000000;
-    text-decoration: none;
-    padding: 12px 0 28px;
-    box-sizing: border-box;
-    text-align: center;
-}
-
 .name-avatar {
     text-align: center;
     float: right;
@@ -277,7 +260,8 @@
 
 .name-avatar {
     position: absolute;
-    bottom: -640px;
+    right: 30px;
+    top: 90px;
 }
 
 .content {

@@ -237,23 +237,6 @@
     text-decoration: none;
 }
 
-.adminbutton {
-    display: block;
-    position: relative;
-    width: 90px;
-    height: 30px;
-    left: 140px;
-    top: 599px;
-    background-color: #fff51f;
-    font-family: "Raleway Black", sans-serif;
-    font-size: 14px;
-    color: #000000;
-    text-decoration: none;
-    padding: 12px 0 28px;
-    box-sizing: border-box;
-    text-align: center;
-}
-
 .name-avatar {
     text-align: center;
     float: right;
@@ -277,8 +260,10 @@
 
 .name-avatar {
     position: absolute;
-    bottom: -640px;
+    bottom: -65px;
+    right: 10px;
 }
+
 
 .content {
     background-color: #f8f8f8;
@@ -300,11 +285,6 @@
 
 .menu {
     background-color: #26d2fc;
-}
-
-.menu ul {
-    list-style: none;
-    padding-left: unset;
 }
 
 .menu_title {
@@ -334,14 +314,13 @@
     background-color: #333333;
     color: #ffffff;
     text-decoration: none;
-    /*margin-top: -2px;*/
+    margin-top: -2px;
 }
 
 .submenu {
-    margin-left: 40px;
+    margin-left: 5px;
     list-style: none;
     /*display: none;*/
-    padding-left: 50px;
 }
 
 .submenu a {
@@ -363,17 +342,6 @@
 .menu_item:hover .submenu li {
     display: block;
 }
-
-/*------------*/
-.menu .submenu {
-    display: none;
-}
-
-.menu ul li:hover .submenu {
-    display: block;
-}
-/*------------*/
-
 
 .left_banner {
     display: block;
