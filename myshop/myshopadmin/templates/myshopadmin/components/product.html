@@ -7,9 +7,10 @@
         <div class="product_name">
             {% if prd.name %}
                 {{ prd.name|title }}
-            {% endif %}
-            {% if prd.title %}
+            {% elif prd.title %}
                 {{ prd.title|title }}
+            {% elif prd.corner %}
+                {{ prd.corner|title }}
             {% endif %}
         </div>
         <div class="product_price">
