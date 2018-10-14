@@ -5,17 +5,23 @@
     <img class="product_img" src="{{ prd.image.img.url }}" alt="">
     <div class="name_price">
         <div class="product_name">
-            {{ prd.name|title }}
+            {% if prd.name %}
+                {{ prd.name|title }}
+            {% endif %}
+            {% if prd.title %}
+                {{ prd.title|title }}
+            {% endif %}
         </div>
         <div class="product_price">
             <div class="now_price">
-                ₽ {{ prd.now_price }}
+                {{ prd.currency }} {{ prd.now_price }}
             </div>
             {% if prd.old_price %}
             <div class="old_price">
-                ₽ {{ prd.old_price }}
+                {{ prd.currency }} {{ prd.old_price }}
             </div>
             {% endif %}
         </div>
     </div>
  </div>
+

@@ -16,8 +16,14 @@ Admin/List
 
 {% block right_content %}
 
+    <div>
+        <a class="menu_item" href="{% url 'myshopadminapp:create' app=app model=model %}">+Add {{model}} </a>
+    </div>
+
     {% for item in results%}
+    <a href="{% url 'myshopadminapp:detail' app=app model=model pk=item.pk %}">
     {% include 'myshopadmin/components/product.html' with prd=item %}
     {% endfor %}
+    </a>
 
 {% endblock %}

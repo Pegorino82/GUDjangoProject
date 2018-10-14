@@ -11,7 +11,15 @@ class ModelCreateProduct(CreateView):
     template_name = 'myshopadmin/create.html'
     success_url = reverse_lazy('myshopadminapp:index')
 
+    def get_queryset(self, **kwargs):
+        qs = super(ModelCreateProduct, self).get_queryset(**kwargs)
+        # qs = self.model.objects
+        return qs.all()
+
     def get(self, request, *args, **kwargs):
+        print('*' * 100)
+        print(request.POST)
+        print('*' * 100)
         app = kwargs.get('app')
         model = kwargs.get('model')
         self.model = apps.get_model(app, model.title())
@@ -32,7 +40,7 @@ class ModelUpdateProduct(UpdateView):
         pk = kwargs.get('pk')
 
         self.model = apps.get_model(app, model.title())
-        self.product = self.model.objects.get(pk=pk)
+        self.object = self.model.objects.get(pk=pk)
         self.fields = [field.name for field in self.model._meta.__dict__.get('local_fields') if field.editable]
 
         return super(ModelUpdateProduct, self).get(request, **kwargs)
@@ -51,7 +59,7 @@ class ModelDeleteProduct(DeleteView):
         pk = kwargs.get('pk')
 
         self.model = apps.get_model(app, model.title())
-        self.product = self.model.objects.get(pk=pk)
+        self.object = self.model.objects.get(pk=pk)
         self.fields = [field.name for field in self.model._meta.__dict__.get('local_fields') if field.editable]
 
         return super(ModelDeleteProduct, self).get(request, **kwargs)
@@ -65,15 +73,22 @@ class ModelDetailProduct(DetailView):
         print('*' * 100)
         print(kwargs)
         print('*' * 100)
-        app = kwargs.get('app')
-        model = kwargs.get('model')
-        pk = kwargs.get('pk')
+        self._app = kwargs.get('app')
+        self._model = kwargs.get('model')
+        self._pk = kwargs.get('pk')
 
-        self.model = apps.get_model(app, model.title())
-        self.object = self.model.objects.get(pk=pk)
+        self.model = apps.get_model(self._app, self._model.title())
+        self.object = self.model.objects.get(pk=self._pk)
         self.fields = [field.name for field in self.model._meta.__dict__.get('local_fields') if field.editable]
 
         return super(ModelDetailProduct, self).get(request, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super(ModelDetailProduct, self).get_context_data(**kwargs)
+        context['app'] = self._app
+        context['model'] = self._model
+        context['pk'] = self._pk
+        return context
 
 
 class ModelListProduct(ListView):
@@ -81,11 +96,17 @@ class ModelListProduct(ListView):
     context_object_name = 'results'
 
     def get(self, request, *args, **kwargs):
-        app = kwargs.get('app')
-        model = kwargs.get('model')
-        self.model = apps.get_model(app, model.title())
+        self._app = kwargs.get('app')
+        self._model = kwargs.get('model')
+        self.model = apps.get_model(self._app, self._model.title())
         self.fields = [field.name for field in self.model._meta.__dict__.get('local_fields') if field.editable]
         return super(ModelListProduct, self).get(request, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super(ModelListProduct, self).get_context_data(**kwargs)
+        context['app'] = self._app
+        context['model'] = self._model
+        return context
 
 
 def index(request):

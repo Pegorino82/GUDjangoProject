@@ -16,4 +16,19 @@ Admin/Create
 
     {{ product }}
 
+    <!--<form method="post">-->
+        <!--{% csrf_token %}-->
+        <!--<input type="submit" value="Edit">-->
+        <!--<input type="submit" value="Delete">-->
+    <!--</form>-->
+
+    <div>
+        <a class="menu_item" href="{% url 'myshopadminapp:update' app=app model=model pk=pk %}">Update</a>
+    </div>
+    <div>
+        <a class="menu_item" href="{% url 'myshopadminapp:delete' app=app model=model pk=pk %}">Delete</a>
+    </div>
+
+
+
 {% endblock %}

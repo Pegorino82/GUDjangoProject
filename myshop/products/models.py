@@ -50,6 +50,11 @@ class Product(models.Model):
         null=True,
         blank=True
     )
+    currency = models.CharField(
+        max_length=50,
+        default='₽'
+    )
+
     product_marker = models.ForeignKey(
         'products.ProductMarker',
         on_delete=models.PROTECT

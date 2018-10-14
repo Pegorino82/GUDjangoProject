@@ -9,11 +9,11 @@
             </div>
             <div class="product_price">
                 <div class="now_price">
-                    ₽ {{ prd.now_price }}
+                    {{ prd.currency }} {{ prd.now_price }}
                 </div>
                 {% if prd.old_price %}
                 <div class="old_price">
-                    ₽ {{ prd.old_price }}
+                    {{ prd.currency }} {{ prd.old_price }}
                 </div>
                 {% endif %}
             </div>
