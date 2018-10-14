@@ -6,7 +6,7 @@ from .models import Customer
 
 
 def login_view(request):
-    # print(request.POST)
+    print(request.POST)
     notification = {}
     if request.method == 'POST':
         usr_name = request.POST.get('username')
@@ -18,7 +18,6 @@ def login_view(request):
 
             if user and user.is_active:
                 login(request, user)
-
 
             else:
                 notification = {
@@ -56,10 +55,5 @@ def login_view(request):
                         'user_name': usr_name,
                         'warn': 'Name is occupied! Choose another'
                     }
-            # else:
-            #     notification = {
-            #         'user_name': usr_name,
-            #         'warn': 'Name is occupied! Choose another'
-            #     }
 
     return render(request, 'customers/customer.html', notification)
