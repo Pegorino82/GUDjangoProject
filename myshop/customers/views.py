@@ -6,7 +6,6 @@ from .models import Customer
 
 
 def login_view(request):
-    print(request.POST)
     notification = {}
     if request.method == 'POST':
         usr_name = request.POST.get('username')
@@ -31,11 +30,7 @@ def login_view(request):
 
         if request.POST.get('logup'):
             avatar = request.FILES.get('avatar')
-            print('*' * 100)
-            print('logup-->', request.POST)
-            print('logup-->', request.POST.get('avatar'))
-            print('*' * 100)
-
+            print('-->', request.FILES)
 
             checker = get_user(request)
 
