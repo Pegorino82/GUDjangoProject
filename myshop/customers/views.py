@@ -11,6 +11,7 @@ def login_view(request):
     if request.method == 'POST':
         usr_name = request.POST.get('username')
         psw = request.POST.get('password')
+        # avatar = request.POST.get('avatar')
 
         if request.POST.get('login'):
 
@@ -29,10 +30,12 @@ def login_view(request):
             logout(request)
 
         if request.POST.get('logup'):
-            # print('*' * 100)
-            # print('logup-->', request.POST)
-            # print('logup-->', request.session)
-            # print('*' * 100)
+            avatar = request.FILES.get('avatar')
+            print('*' * 100)
+            print('logup-->', request.POST)
+            print('logup-->', request.POST.get('avatar'))
+            print('*' * 100)
+
 
             checker = get_user(request)
 
@@ -40,7 +43,8 @@ def login_view(request):
 
                 try:
                     customer = Customer(
-                        username=usr_name
+                        username=usr_name,
+                        avatar=avatar
                     )
                     customer.is_active = True
                     customer.set_password(psw)
@@ -55,5 +59,11 @@ def login_view(request):
                         'user_name': usr_name,
                         'warn': 'Name is occupied! Choose another'
                     }
+
+                else:
+                    user = authenticate(username=usr_name, password=psw)
+
+                    if user and user.is_active:
+                        login(request, user)
 
     return render(request, 'customers/customer.html', notification)

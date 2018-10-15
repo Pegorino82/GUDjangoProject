@@ -23,8 +23,9 @@
     <div class="main_section_header">
         You are here, {{ user }}
     </div>
-    <form action="/customer/" method="post">
+    <form action="/customer/" method="post" enctype="multipart/form-data">
         {% csrf_token %}
+
         <div class="main-page-auth">
             <div class="input-group main-page">
                 <span class="input-group-addon" id="sizing-addon1">Login</span>
@@ -34,15 +35,23 @@
                 <span class="input-group-addon" id="sizing-addon2">Password</span>
                 <input name="password" type="password" class="form-control" placeholder="Password" aria-describedby="sizing-addon2">
             </div>
+
+            <div class="input-group main-page">
+                <span class="input-group-addon">Avatar</span>
+                <input name="avatar" type="file" accept="image/*">
+            </div>
+
             <div class="input-group">
                 {% if not user.is_authenticated %}
-                <input name="login" type="submit" value="Войти">
-                <input name="logup" type="submit" value="Зарегистрироваться">
+
+                <input name="login" type="submit" value="Войти"><br>
+                <input name="logup" type="submit" value="Зарегистрироваться"><br>
                 {% else %}
                 <input name="exit" type="submit" value="Выйти">
                 {% endif %}
             </div>
         </div>
+
     </form>
 </div>
 
