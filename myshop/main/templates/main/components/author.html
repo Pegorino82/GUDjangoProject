@@ -1,0 +1,20 @@
+{% load static %}
+
+{% if object.photo %}
+    <img class="author-photo" src="{{ object.photo.url }} " alt="{{ object }}">
+{% else %}
+    <div class="author-photo" style="
+        height: 250px;
+        border: 1px solid black;
+        text-align: center">
+        No photo
+    </div>
+{% endif %}
+    <div class="author-info">
+        <span class="name">
+            {{ object.name }}
+        </span>
+        <span class="lastname">
+            {{ object.lastname }}
+        </span>
+    </div>

@@ -3,33 +3,26 @@
 {% load staticfiles %}
 
 {% block page_title %}
-    Main
+Detail Article
 {% endblock %}
 
 {% block bootstrap_css %}
 {% endblock %}
 {% block style_css %}
+<link rel="stylesheet" href="{% static 'main/styles/forms.css' %}">
 {% endblock %}
 
 {% block small_menu_items %}
 {% endblock %}
 
-{% block small_menu_mainpage %}
-{% endblock %}
-
 {% block large_menu_items %}
-{% endblock %}
-
-{% block large_menu_mainpage %}
 {% endblock %}
 
 {% block right_content %}
 
-    {% for content in results %}
-        {% include 'main/components/article.html' with content=content %}
-    {% endfor %}
+{% include 'main/components/article.html' with content=object %}
+
 {% endblock %}
 
 {% block bootstrap_js %}
-    <script src="{% static 'main/packages/bootstrap-3.3.7-dist/js/bootstrap.min.js' %}"></script>
 {% endblock %}

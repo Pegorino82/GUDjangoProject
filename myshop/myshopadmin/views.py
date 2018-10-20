@@ -10,6 +10,7 @@ from products.models import Product
 class ModelCreateProduct(CreateView):
     template_name = 'myshopadmin/create.html'
 
+
     def get_context_data(self, **kwargs):
         '''not used here'''
         context = super(ModelCreateProduct, self).get_context_data(**kwargs)
@@ -25,9 +26,9 @@ class ModelCreateProduct(CreateView):
         return super(ModelCreateProduct, self).get(request, *args, **kwargs)
 
     def post(self, request, *args, **kwargs):
-        self._app = kwargs.get('app')
-        self._model = kwargs.get('model')
-        self.model = apps.get_model(self._app, self._model.title())
+        app = kwargs.get('app')
+        model = kwargs.get('model')
+        self.model = apps.get_model(app, model.title())
         self.fields = [field.name for field in self.model._meta.__dict__.get('local_fields') if field.editable]
         self.success_url = reverse_lazy('myshopadminapp:list', kwargs=kwargs)
         return super(ModelCreateProduct, self).post(request)
@@ -71,9 +72,7 @@ class ModelDeleteProduct(DeleteView):
     def post(self, request, *args, **kwargs):
         app = kwargs.get('app')
         model = kwargs.get('model')
-        # pk = kwargs.get('pk')
         self.model = apps.get_model(app, model.title())
-        # self.object = self.model.objects.get(pk=pk)
         self.fields = [field.name for field in self.model._meta.__dict__.get('local_fields') if field.editable]
         self.success_url = reverse_lazy('myshopadminapp:list', kwargs={'app': app, 'model': model})
         return super(ModelDeleteProduct, self).post(request)

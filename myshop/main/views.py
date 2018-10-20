@@ -1,11 +1,158 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
-from .models import MainPageContent, Author
+from django.urls import reverse_lazy
+
+from main.models import MainPageContent, Author
+from main.forms import MainAuthorForm, MainArticleModelForm
 
 
 def index(request):
+    template_name = 'main/index.html'
     context = {
         'results': MainPageContent.objects.all()
     }
 
-    return render(request, 'main/index.html', context)
+    return render(request, template_name, context)
+
+
+def create_author(request):
+    template_name = 'main/create_author.html'
+    success_url = reverse_lazy('mainapp:list_author')
+    form = MainAuthorForm(request.POST)
+
+    upl_img = request.FILES.get('photo')
+
+    if request.method == 'POST':
+
+        if form.is_valid():
+            name = form.cleaned_data.get('name')
+            lastname = form.cleaned_data.get('lastname')
+            photo = upl_img
+
+            Author.objects.create(
+                name=name,
+                lastname=lastname,
+                photo=photo
+            )
+
+            return redirect(success_url)
+    return render(request, template_name, {'form': form})
+
+
+def update_author(request, **kwargs):
+    template_name = 'main/update_author.html'
+    success_url = reverse_lazy('mainapp:list_author')
+    pk = kwargs.get('pk')
+    obj = Author.objects.get(pk=pk)
+    # TODO как заполнить поля формы полями выбранного объекта?
+    form = MainAuthorForm()
+    form.name = obj.name
+    form.lastname = obj.lastname
+    form.photo = obj.photo
+
+    if request.method == 'POST':
+        form = MainAuthorForm(
+            request.POST
+        )
+
+        if form.is_valid:
+            form.save()
+
+            return redirect(success_url)
+    return render(request, template_name, {'form': form, 'obj': obj})
+
+
+def detail_author(request, **kwargs):
+    template_name = 'main/detail_author.html'
+    pk = kwargs.get('pk')
+    obj = Author.objects.get(pk=pk)
+
+    return render(request, template_name, {'object': obj})
+
+
+def delete_author(request, **kwargs):
+    template_name = 'main/delete_author.html'
+    success_url = reverse_lazy('mainapp:list_author')
+    pk = kwargs.get('pk')
+    obj = Author.objects.get(pk=pk)
+
+    if request.method == 'POST':
+        obj.delete()
+        return redirect(success_url)
+    return render(request, template_name, {'object': obj})
+
+
+def list_author(request):
+    template_name = 'main/list_author.html'
+    context = {
+        'results': Author.objects.all()
+    }
+
+    return render(request, template_name, context)
+
+
+def create_article(request):
+    template_name = 'main/create_article.html'
+    success_url = reverse_lazy('mainapp:index')
+    form = MainArticleModelForm(request.POST)
+
+    import datetime
+
+    if request.method == 'POST':
+        print('*' * 100)
+        dt = form.data.get('date')
+
+        dt_ = datetime.datetime.strptime('2018-10-12T00:02', '%Y-%m-%dT%H:%M')
+        form.data['date'] = dt_
+
+        print({k: i for k, i in form.data.items()})
+        print('*' * 100)
+
+        if form.is_valid():
+            # TODO надо парсить дату/время
+            form.save()
+
+            return redirect(success_url)
+
+    return render(request, template_name, {'form': form})
+
+
+def update_article(request, **kwargs):
+    template_name = 'main/update_article.html'
+    success_url = reverse_lazy('mainapp:index')
+    pk = kwargs.get('pk')
+    object = MainPageContent.objects.get(pk=pk)
+
+    # TODO надо передеть в форму время
+    form = MainArticleModelForm(instance=object)
+
+    if request.method == 'POST':
+        form = MainArticleModelForm(
+            request.POST,
+            instance=object
+        )
+        # TODO надо парсить дату/время
+        if form.is_valid:
+            return redirect(success_url)
+
+    return render(request, template_name, {'form': form})
+
+
+def detail_article(request, **kwargs):
+    template_name = 'main/detail_article.html'
+    pk = kwargs.get('pk')
+    object = MainPageContent.objects.get(pk=pk)
+
+    return render(request, template_name, {'object': object})
+
+
+def delete_article(request, **kwargs):
+    template_name = 'main/delete_article.html'
+    success_url = reverse_lazy('mainapp:index')
+    pk = kwargs.get('pk')
+    object = MainPageContent.objects.get(pk=pk)
+
+    if request.method == 'POST':
+        object.delete()
+        return redirect(success_url)
+    return render(request, template_name, {'object': object})
