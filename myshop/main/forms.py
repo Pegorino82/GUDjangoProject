@@ -33,18 +33,18 @@ class MainAuthorForm(forms.Form):
 
 
 class MainArticleModelForm(forms.ModelForm):
+    date = forms.DateTimeField(
+        input_formats=['%Y-%m-%dT%H:%M'],
+        widget=forms.DateTimeInput(
+            attrs={
+                'type': 'datetime-local',
+                'class': 'form-model-date'
+            }
+        )
+    )
     class Meta:
         model = MainPageContent
         fields = ['chapter', 'content', 'date', 'author']
-        input_formats = ['%yyyy-%mm-%ddT%H:%M'],
-        widgets = {
-            # TODO  надо парсить дату/время
-            'date':
-                forms.widgets.DateTimeInput(
-                    attrs={
-                        'type': 'datetime-local',
-                        'class': 'form-model-date'
-                    }
-
-            ),
+        labels = {
+            'date': '%Y-%m-%d %H:%M',
         }

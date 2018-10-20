@@ -22,7 +22,7 @@ class Author(models.Model):
 class MainPageContent(models.Model):
     chapter = models.CharField(max_length=150)
     content = models.TextField()
-    date = models.DateTimeField()
+    date = models.DateTimeField()  # лишнее поле
     author = models.ForeignKey(
         'main.Author',
         on_delete=models.CASCADE
@@ -30,7 +30,7 @@ class MainPageContent(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
 
-    # def __str__(self):
-    #     return '{} {} (author {})'.format(self.chapter[:10],
-    #                                       self.content[:10],
-    #                                       self.author)
+    def __str__(self):
+        return '{} {} (author {})'.format(self.chapter[:10],
+                                          self.content[:10],
+                                          self.author)

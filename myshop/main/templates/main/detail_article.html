@@ -20,7 +20,7 @@ Detail Article
 
 {% block right_content %}
 
-{% include 'main/components/article.html' with content=object %}
+{% include 'main/components/article.html' with content=object object=object.author %}
 
 {% endblock %}
 

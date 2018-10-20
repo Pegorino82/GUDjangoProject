@@ -96,20 +96,9 @@ def create_article(request):
     success_url = reverse_lazy('mainapp:index')
     form = MainArticleModelForm(request.POST)
 
-    import datetime
-
     if request.method == 'POST':
-        print('*' * 100)
-        dt = form.data.get('date')
-
-        dt_ = datetime.datetime.strptime('2018-10-12T00:02', '%Y-%m-%dT%H:%M')
-        form.data['date'] = dt_
-
-        print({k: i for k, i in form.data.items()})
-        print('*' * 100)
 
         if form.is_valid():
-            # TODO надо парсить дату/время
             form.save()
 
             return redirect(success_url)
@@ -131,8 +120,8 @@ def update_article(request, **kwargs):
             request.POST,
             instance=object
         )
-        # TODO надо парсить дату/время
         if form.is_valid:
+            form.save()
             return redirect(success_url)
 
     return render(request, template_name, {'form': form})

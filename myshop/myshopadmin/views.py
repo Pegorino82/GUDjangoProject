@@ -11,17 +11,17 @@ class ModelCreateProduct(CreateView):
     template_name = 'myshopadmin/create.html'
 
 
-    def get_context_data(self, **kwargs):
-        '''not used here'''
-        context = super(ModelCreateProduct, self).get_context_data(**kwargs)
-        context['app'] = self._app
-        context['model'] = self._model
-        return context
+    # def get_context_data(self, **kwargs):
+    #     '''not used here'''
+    #     context = super(ModelCreateProduct, self).get_context_data(**kwargs)
+    #     context['app'] = self._app
+    #     context['model'] = self._model
+    #     return context
 
     def get(self, request, *args, **kwargs):
-        self._app = kwargs.get('app')
-        self._model = kwargs.get('model')
-        self.model = apps.get_model(self._app, self._model.title())
+        app = kwargs.get('app')
+        model = kwargs.get('model')
+        self.model = apps.get_model(app, model.title())
         self.fields = [field.name for field in self.model._meta.__dict__.get('local_fields') if field.editable]
         return super(ModelCreateProduct, self).get(request, *args, **kwargs)
 
