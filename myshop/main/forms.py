@@ -1,5 +1,5 @@
 from django import forms
-from main.models import MainPageContent
+from main.models import MainPageContent, Author
 
 
 class MainAuthorForm(forms.Form):
@@ -32,6 +32,14 @@ class MainAuthorForm(forms.Form):
     )
 
 
+class MainAuthorModelForm(forms.ModelForm):
+
+    class Meta:
+        model = Author
+        fields = ['name', 'lastname', 'photo']
+
+
+
 class MainArticleModelForm(forms.ModelForm):
     date = forms.DateTimeField(
         input_formats=['%Y-%m-%dT%H:%M'],
@@ -45,6 +53,4 @@ class MainArticleModelForm(forms.ModelForm):
     class Meta:
         model = MainPageContent
         fields = ['chapter', 'content', 'date', 'author']
-        labels = {
-            'date': '%Y-%m-%d %H:%M',
-        }
+
