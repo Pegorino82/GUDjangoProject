@@ -18,7 +18,7 @@ def category(request, category):
 
     result = {
         'category': category,
-        'products': Product.objects.filter(category=category_id),
+        'products': Product.objects.filter(category=category_id).order_by('-id'),
         'categories': Category.objects.all()
     }
 

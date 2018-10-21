@@ -9,7 +9,7 @@ from main.forms import MainAuthorForm, MainArticleModelForm, MainAuthorModelForm
 def index(request):  # list_articles
     template_name = 'main/index.html'
     context = {
-        'results': MainPageContent.objects.all()
+        'results': MainPageContent.objects.all().order_by('-pk')
     }
 
     return render(request, template_name, context)
