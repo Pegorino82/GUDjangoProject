@@ -10,6 +10,7 @@
 {% endblock %}
 
 {% block style_css %}
+<link rel="stylesheet" href="{% static 'products/styles/product.css' %}">
 {% endblock %}
 
 {% block small_menu_items %}
@@ -51,6 +52,7 @@
              <div class="product_describe">
                  {{ product.long_text }}
              </div>
+            <a class="link-add-to-basket" href="{% url 'basketapp:add_product' pk=product.id %}">Add to basket</a>
         </div>
 
     </div>

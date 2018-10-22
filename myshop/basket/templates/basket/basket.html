@@ -1,0 +1,45 @@
+{% extends 'myshop/base.html' %}
+
+{% load staticfiles %}
+
+{% block page_title %}
+    Basket
+{% endblock %}
+
+{% block bootstrap_css %}
+{% endblock %}
+
+{% block style_css %}
+<link rel="stylesheet" href="{% static 'basket/styles/basket.css' %}">
+{% endblock %}
+
+{% block small_menu_items %}
+{% endblock %}
+
+{% block small_menu_mainpage %}
+{% endblock %}
+
+{% block large_menu_items %}
+{% endblock %}
+
+{% block large_menu_mainpage %}
+{% endblock %}
+
+{% block right_content %}
+<div class="main_section_header">
+    {{ basket.0.user }}
+</div>
+{% for item in basket %}
+<div class="product-line">
+    {% include 'basket/components/product.html' with product=item.product %}
+    <span class="quantity">
+        {{ item.quantity }}
+    </span>
+
+</div>
+{% endfor %}
+{% endblock %}
+
+{% block bootstrap_js %}
+<script src="{% static 'basket/packages/bootstrap-3.3.7-dist/js/bootstrap.min.js' %}"></script>
+{% endblock %}

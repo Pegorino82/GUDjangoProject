@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'images',
     'customers',
     'myshopadmin',
-
+    'basket',
 ]
 
 MIDDLEWARE = [
