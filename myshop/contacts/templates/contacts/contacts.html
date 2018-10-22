@@ -7,22 +7,14 @@
 {% endblock %}
 
 {% block bootstrap_css %}
-    <link href="{% static 'contacts/packages/bootstrap-3.3.7-dist/css/bootstrap.min.css' %}" rel="stylesheet">
 {% endblock %}
 {% block style_css %}
-    <link rel="stylesheet" href="{% static 'contacts/styles/style.css' %}">
 {% endblock %}
 
 {% block small_menu_items %}
-    <li><a class="menu_item" href="{% url 'mainapp:index' %}">Main</a></li>
-    <li><a class="menu_item" href="{% url 'productsapp:catalog' %}">Catalog</a></li>
-    <li><a class="menu_item" href="{% url 'contactsapp:contacts' %}">Contacts</a></li>
 {% endblock %}
 
 {% block large_menu_items %}
-    <a class="menu_item" href="{% url 'mainapp:index' %}">Main</a>
-    <a class="menu_item" href="{% url 'productsapp:catalog' %}">Catalog</a>
-    <a class="menu_item" href="{% url 'contactsapp:contacts' %}">Contacts</a>
 {% endblock %}
 
 {% block right_content %}
@@ -30,21 +22,28 @@
                     <div class="main_section_header">
                         Feedback
                     </div>
-                    <div class="input-group">
-                        <span class="input-group-addon" id="sizing-addon1">Name</span>
-                        <input type="text" class="form-control" placeholder="Username" aria-describedby="sizing-addon2">
-                    </div>
-                    <div class="input-group">
-                        <span class="input-group-addon" id="sizing-addon2">E-mail</span>
-                        <input type="text" class="form-control" placeholder="username@example.com" aria-describedby="sizing-addon2">
-                    </div>
-                    <div class="input-group">
-                        <input type="text" class="form-control" aria-label="...">
-                        <div class="input-group-btn">
-                            <button type="button" class="btn btn-default">Send!</button>
+                    <form method="post" action="/contacts/">
+                        {% csrf_token %}
+                        <div class="input-group">
+                            <span class="input-group-addon" id="sizing-addon1">Name</span>
+                            <input name="username" type="text" class="form-control" placeholder="Username" aria-describedby="sizing-addon2">
                         </div>
-                    </div>
+                        <div class="input-group">
+                            <span class="input-group-addon" id="sizing-addon2">E-mail</span>
+                            <input name="email" type="email" class="form-control" placeholder="username@example.com" aria-describedby="sizing-addon2">
+                        </div>
+                        <div class="input-group">
+                            <input name="text" type="text" class="form-control" aria-label="...">
+                            <div class="input-group-btn">
+                                <input name="sendbtn" type="submit" class="btn btn-default" value="Send">
+                            </div>
+                        </div>
+                    </form>
                 </div>
+
+                {{ usr_name }}<br>
+                {{ email }}<br>
+                {{ text }}<br>
 
                 <div class="main_section">
                     <div class="main_section_header">

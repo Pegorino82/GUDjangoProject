@@ -7,39 +7,26 @@
 {% endblock %}
 
 {% block bootstrap_css %}
-    <link href="{% static 'main/packages/bootstrap-3.3.7-dist/css/bootstrap.min.css' %}" rel="stylesheet">
 {% endblock %}
 {% block style_css %}
-    <link rel="stylesheet" href="{% static 'main/styles/style.css' %}">
 {% endblock %}
 
 {% block small_menu_items %}
-    <li><a class="menu_item" href="{% url 'mainapp:index' %}">Main</a></li>
-    <li><a class="menu_item" href="{% url 'productsapp:catalog' %}">Catalog</a></li>
-    <li><a class="menu_item" href="{% url 'contactsapp:contacts' %}">Contacts</a></li>
+{% endblock %}
+
+{% block small_menu_mainpage %}
 {% endblock %}
 
 {% block large_menu_items %}
-    <a class="menu_item" href="{% url 'mainapp:index' %}">Main</a>
-    <a class="menu_item" href="{% url 'productsapp:catalog' %}">Catalog</a>
-    <a class="menu_item" href="{% url 'contactsapp:contacts' %}">Contacts</a>
+{% endblock %}
+
+{% block large_menu_mainpage %}
 {% endblock %}
 
 {% block right_content %}
-    {% for content in results %}
-        <div class="main_section">
-            <div class="main_section_header">
-                {{ content.chapter }}
-            </div>
-             <div class="main_section_img">
 
-             </div>
-             <div class="row main_section_content">
-                 {{ content.content }}
-             </div>
-            <span>By {{ content.author }},</span>
-            <span>{{ content.date.date }}</span>
-        </div>
+    {% for content in results %}
+        {% include 'main/components/article.html' with content=content object=content.author %}
     {% endfor %}
 {% endblock %}
 

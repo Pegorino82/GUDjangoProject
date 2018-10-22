@@ -13,8 +13,11 @@
     </title>
 
     <!-- Bootstrap -->
+    <link href="{% static 'myshop/packages/bootstrap-3.3.7-dist/css/bootstrap.min.css' %}" rel="stylesheet">
     {% block bootstrap_css %}
     {% endblock %}
+    <link rel="stylesheet" href="{% static 'myshop/styles/style.css' %}">
+
     {% block style_css %}
     {% endblock %}
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
@@ -46,8 +49,16 @@
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
+
+                            <li><a class="menu_item" href="{% url 'mainapp:index' %}">Main</a></li>
+                            <li><a class="menu_item" href="{% url 'customersapp:login_view' %}">Customer</a></li>
+                            <li><a class="menu_item" href="{% url 'productsapp:catalog' %}">Catalog</a></li>
                             {% block small_menu_items %}
                             {% endblock %}
+                            <li><a class="menu_item" href="{% url 'contactsapp:contacts' %}">Contacts</a></li>
+                            {% block small_menu_mainpage %}
+                            {% endblock %}
+
                         </ul>
                     </div><!-- /.navbar-collapse -->
                 </div><!-- /.container-fluid -->
@@ -80,6 +91,13 @@
                         </span>
             </span>
             <a class="gonowbutton" href="{% url 'productsapp:catalog' %}">GO NOW</a>
+            <div class="name-avatar">
+                <img src="{{ user.avatar.url }}" alt="{{ user.username }}">
+                <span>{{ user.username }}</span>
+            </div>
+            {% if user.is_staff == 1 %}
+            <a class="adminbutton" href="{% url 'myshopadminapp:index' %}">AdminSite</a>
+            {% endif %}
         </div>
     </div>
 
@@ -90,8 +108,19 @@
                     <div class="menu_title">
                         Menu
                     </div>
-                    {% block large_menu_items %}
-                    {% endblock %}
+
+                    <ul>
+                        <li><a class="menu_item" href="{% url 'mainapp:index' %}">Main</a></li>
+                        <li><a class="menu_item" href="{% url 'customersapp:login_view' %}">Customer</a></li>
+                        <li><a class="menu_item" href="{% url 'productsapp:catalog' %}">Catalog</a>
+                            {% block large_menu_items %}
+                            {% endblock %}
+                        </li>
+                        <li><a class="menu_item" href="{% url 'contactsapp:contacts' %}">Contacts</a></li>
+                            {% block large_menu_mainpage %}
+                            {% endblock %}
+                    </ul>
+
                 </div>
                 <a class="left_banner" href="#">
                     <div>
