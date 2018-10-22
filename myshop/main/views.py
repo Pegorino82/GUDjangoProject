@@ -93,7 +93,7 @@ def update_author(request, **kwargs):
             form.save()
             return redirect(success_url)
 
-    return render(request, template_name, {'form': form})
+    return render(request, template_name, {'form': form, 'object': obj})
 
 
 def detail_author(request, **kwargs):

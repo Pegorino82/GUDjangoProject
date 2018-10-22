@@ -3,11 +3,12 @@
 {% load staticfiles %}
 
 {% block page_title %}
-    Create Article
+Create Article
 {% endblock %}
 
 {% block bootstrap_css %}
 {% endblock %}
+
 {% block style_css %}
 <link rel="stylesheet" href="{% static 'main/styles/forms.css' %}">
 {% endblock %}
@@ -15,7 +16,13 @@
 {% block small_menu_items %}
 {% endblock %}
 
+{% block small_menu_mainpage %}
+{% endblock %}
+
 {% block large_menu_items %}
+{% endblock %}
+
+{% block large_menu_mainpage %}
 {% endblock %}
 
 {% block right_content %}
@@ -31,13 +38,12 @@
         <label class="form-model-label" for="{{ field.name }}">
             {{ field.label }}
         </label>
-            {{ field }}
-
-            {% for err in field.errors %}
-            <small>
-                {{ err }}
-            </small>
-            {% endfor %}
+        {{ field }}
+        {% for err in field.errors %}
+        <small>
+            {{ err }}
+        </small>
+        {% endfor %}
     </div>
     {% endfor %}
     <div class="form-model">
@@ -47,4 +53,5 @@
 {% endblock %}
 
 {% block bootstrap_js %}
+<script src="{% static 'main/packages/bootstrap-3.3.7-dist/js/bootstrap.min.js' %}"></script>
 {% endblock %}

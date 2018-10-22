@@ -8,48 +8,55 @@
 
 {% block bootstrap_css %}
 {% endblock %}
+
 {% block style_css %}
 {% endblock %}
 
 {% block small_menu_items %}
-   <ul class="submenu">
-        {% for category in categories %}
-        <li><a href="{% url 'productsapp:category' category=category.title %}">{{category.title}}</a></li>
-        {% endfor %}
-    </ul>
+<ul class="submenu">
+    {% for category in categories %}
+    <li><a href="{% url 'productsapp:category' category=category.title %}">{{category.title}}</a></li>
+    {% endfor %}
+</ul>
+{% endblock %}
+
+{% block small_menu_mainpage %}
 {% endblock %}
 
 {% block large_menu_items %}
-    <ul class="submenu">
-        {% for category in categories %}
-        <li><a href="{% url 'productsapp:category' category=category.title %}">{{category.title}}</a></li>
-        {% endfor %}
-    </ul>
+<ul class="submenu">
+    {% for category in categories %}
+    <li><a href="{% url 'productsapp:category' category=category.title %}">{{category.title}}</a></li>
+    {% endfor %}
+</ul>
+{% endblock %}
+
+{% block large_menu_mainpage %}
 {% endblock %}
 
 {% block right_content %}
-    {% for category in categories %}
-        <div class="category_products">
-            <a href="{% url 'productsapp:category' category=category.title %}">
-                <div class="products_header">
-                {{ category.title }}
-                </div>
-            </a>
-            <div class="row products_table">
-                {% for product in limit_products %}
-                    {% if product.category == category %}
-                     <div class="col-md-4 col-sm-6 col-xs-12 product_cell">
-
-                         {% include 'products/components/product.html' with prd_ctgry=category.title prd_id=product.id prd=product %}
-
-                     </div>
-                    {% endif %}
-                {% endfor %}
+{% for category in categories %}
+    <div class="category_products">
+        <a href="{% url 'productsapp:category' category=category.title %}">
+            <div class="products_header">
+            {{ category.title }}
             </div>
+        </a>
+        <div class="row products_table">
+            {% for product in limit_products %}
+                {% if product.category == category %}
+                 <div class="col-md-4 col-sm-6 col-xs-12 product_cell">
+
+                     {% include 'products/components/product.html' with prd_ctgry=category.title prd_id=product.id prd=product %}
+
+                 </div>
+                {% endif %}
+            {% endfor %}
         </div>
-    {% endfor %}
+    </div>
+{% endfor %}
 {% endblock %}
 
 {% block bootstrap_js %}
-    <script src="{% static 'products/packages/bootstrap-3.3.7-dist/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'products/packages/bootstrap-3.3.7-dist/js/bootstrap.min.js' %}"></script>
 {% endblock %}

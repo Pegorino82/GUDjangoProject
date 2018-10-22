@@ -8,6 +8,7 @@ Detail Author
 
 {% block bootstrap_css %}
 {% endblock %}
+
 {% block style_css %}
 <link rel="stylesheet" href="{% static 'main/styles/forms.css' %}">
 {% endblock %}
@@ -15,7 +16,13 @@ Detail Author
 {% block small_menu_items %}
 {% endblock %}
 
+{% block small_menu_mainpage %}
+{% endblock %}
+
 {% block large_menu_items %}
+{% endblock %}
+
+{% block large_menu_mainpage %}
 {% endblock %}
 
 {% block right_content %}
@@ -25,4 +32,5 @@ Detail Author
 {% endblock %}
 
 {% block bootstrap_js %}
+<script src="{% static 'main/packages/bootstrap-3.3.7-dist/js/bootstrap.min.js' %}"></script>
 {% endblock %}

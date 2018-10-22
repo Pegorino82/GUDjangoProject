@@ -8,6 +8,7 @@ Detail Customer
 
 {% block bootstrap_css %}
 {% endblock %}
+
 {% block style_css %}
 <link rel="stylesheet" href="{% static 'customers/styles/forms.css' %}">
 {% endblock %}
@@ -19,10 +20,10 @@ Detail Customer
 {% endblock %}
 
 {% block right_content %}
-
 {% include 'customers/components/customer.html' with object=object %}
-
 {% endblock %}
 
 {% block bootstrap_js %}
+<script src="{% static 'customers/packages/bootstrap-3.3.7-dist/js/bootstrap.min.js' %}"></script>
+
 {% endblock %}

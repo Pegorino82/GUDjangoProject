@@ -1,7 +1,8 @@
 {% load static %}
 
+
 <a href="{% url 'productsapp:product' category=prd_ctgry pk=prd_id %}">
-     <div class="product_card {{prd.product_marker|default_if_none:''}}">
+    <div class="product_card {{prd.product_marker|default_if_none:''}}">
         <img class="product_img" src="{{ prd.image.img.url }}" alt="">
         <div class="name_price">
             <div class="product_name">
@@ -18,5 +19,5 @@
                 {% endif %}
             </div>
         </div>
-     </div>
- </a>
+    </div>
+</a>

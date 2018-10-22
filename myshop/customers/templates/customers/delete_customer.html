@@ -11,21 +11,21 @@
 
 {% block style_css %}
 <link rel="stylesheet" href="{% static 'customers/styles/forms.css' %}">
-
 {% endblock %}
 
 {% block small_menu_items %}
 {% endblock %}
+
 {% block small_menu_mainpage %}
 {% endblock %}
 
 {% block large_menu_items %}
 {% endblock %}
+
 {% block large_menu_mainpage %}
 {% endblock %}
 
 {% block right_content %}
-
 <div class="main_section">
     <div class="main_section_header">
         {{ object.username }}
@@ -41,9 +41,8 @@
 
     {{ user_name }}
     {{ warn }}
-
 {% endblock %}
 
 {% block bootstrap_js %}
-    <script src="{% static 'main/packages/bootstrap-3.3.7-dist/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'customers/packages/bootstrap-3.3.7-dist/js/bootstrap.min.js' %}"></script>
 {% endblock %}
