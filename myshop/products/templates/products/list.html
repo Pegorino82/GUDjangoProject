@@ -3,13 +3,14 @@
 {% load staticfiles %}
 
 {% block page_title %}
-    Catalog
+    List
 {% endblock %}
 
 {% block bootstrap_css %}
 {% endblock %}
 
 {% block style_css %}
+<link rel="stylesheet" href="{% static 'products/styles/forms.css' %}">
 {% endblock %}
 
 {% block small_menu_items %}
@@ -20,9 +21,6 @@
 </ul>
 {% endblock %}
 
-{% block small_menu_mainpage %}
-{% endblock %}
-
 {% block large_menu_items %}
 <ul class="submenu">
     {% for category in categories %}
@@ -31,29 +29,13 @@
 </ul>
 {% endblock %}
 
-{% block large_menu_mainpage %}
-{% endblock %}
-
 {% block right_content %}
-{% for category in categories %}
-    <div class="category_products">
-        <a href="{% url 'categoriesapp:category' category=category.name %}">
-            <div class="products_header">
-            {{ category.name }}
-            </div>
-        </a>
-        <div class="row products_table">
-            {% for product in limit_products %}
-                {% if product.category == category %}
-                 <div class="col-md-4 col-sm-6 col-xs-12 product_cell">
-
-                     {% include 'products/components/product.html' with prd_ctgry=category.name prd_id=product.id prd=product %}
-
-                 </div>
-                {% endif %}
-            {% endfor %}
-        </div>
+{% for object in results %}
+<div class="main_section">
+    <div class="main_section_header">
+        {{ object }}
     </div>
+</div>
 {% endfor %}
 {% endblock %}
 

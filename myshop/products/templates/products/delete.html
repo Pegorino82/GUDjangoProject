@@ -3,13 +3,14 @@
 {% load staticfiles %}
 
 {% block page_title %}
-    Product
+   Delete
 {% endblock %}
 
 {% block bootstrap_css %}
 {% endblock %}
 
 {% block style_css %}
+<link rel="stylesheet" href="{% static 'products/styles/forms.css' %}">
 <link rel="stylesheet" href="{% static 'products/styles/product.css' %}">
 {% endblock %}
 
@@ -40,20 +41,48 @@
 
     <div class="products_header">
         {{ product.name }} /
-        <a href="{% url 'categoriesapp:category' category=category %}">{{ category }}</a>
+        <a href="{% url 'categoriesapp:category' category=product.category %}">{{ product.category }}</a>
     </div>
 
     <div class="row products_table">
 
          <div class="col-md-6 col-sm-6 col-xs-12 product_cell">
-             {% include 'products/components/product.html' with prd_ctgry=category prd_id=pk prd=product %}
+             <div class="product_card {{product.product_marker|default_if_none:''}}">
+        <img class="product_img" src="{{ product.image.img.url }}" alt="">
+        <div class="name_price">
+            <div class="product_name">
+                {{ product.name|title }}
+            </div>
+            <div class="product_price">
+                <div class="now_price">
+                    {{ product.currency }} {{ product.now_price }}
+                </div>
+                {% if product.old_price %}
+                <div class="old_price">
+                    {{ product.currency }} {{ product.old_price }}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
         </div>
         <div class="col-md-6 col-sm-6 col-xs-12 product_cell">
              <div class="product_describe">
                  {{ product.long_text }}
              </div>
-            <a class="link-add-to-basket" href="{% url 'basketapp:add_product' pk=product.id %}">Add to basket</a>
         </div>
+
+        <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% for err in form.not_field_errors %}
+            <span>
+                {{ err }}
+            </span>
+        {% endfor %}
+            <div class="input-group">
+                <input name="delete" type="submit" value="DELETE">
+            </div>
+        </form>
 
     </div>
 </div>
