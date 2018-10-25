@@ -43,14 +43,14 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand logo_xs" href="/index/">My<span>Shop</span></a>
+                        <a class="navbar-brand logo_xs" href="{% url 'articlesapp:list' %}">My<span>Shop</span></a>
                     </div>
 
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
 
-                            <li><a class="menu_item" href="{% url 'mainapp:index' %}">Main</a></li>
+                            <li><a class="menu_item" href="{% url 'articlesapp:list' %}">Main</a></li>
                             <li><a class="menu_item" href="{% url 'customersapp:login_view' %}">Customer</a></li>
                             <li><a class="menu_item" href="{% url 'productsapp:catalog' %}">Catalog</a></li>
                             {% block small_menu_items %}
@@ -65,7 +65,7 @@
                 </div><!-- /.container-fluid -->
             </nav>
 
-            <a href="{% url 'mainapp:index' %}" class="logo hidden-xs"></a>
+            <a href="{% url 'articlesapp:list' %}" class="logo hidden-xs"></a>
             <div class="social_icons">
                 <a href="#"><i class="fab fa-facebook-f"></i></a>
                 <a href="#"><i class="fab fa-twitter"></i></a>
@@ -111,7 +111,7 @@
                     </div>
 
                     <ul>
-                        <li><a class="menu_item" href="{% url 'mainapp:index' %}">Main</a></li>
+                        <li><a class="menu_item" href="{% url 'articlesapp:list' %}">Main</a></li>
                         <li><a class="menu_item" href="{% url 'customersapp:login_view' %}">Customer</a></li>
                         <li><a class="menu_item" href="{% url 'productsapp:catalog' %}">Catalog</a>
                             {% block large_menu_items %}

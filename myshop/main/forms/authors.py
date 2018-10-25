@@ -1,5 +1,5 @@
 from django import forms
-from main.models import MainPageContent, Author
+from main.models import Author
 
 
 class MainAuthorForm(forms.Form):
@@ -33,24 +33,6 @@ class MainAuthorForm(forms.Form):
 
 
 class MainAuthorModelForm(forms.ModelForm):
-
     class Meta:
         model = Author
         fields = ['name', 'lastname', 'photo']
-
-
-
-class MainArticleModelForm(forms.ModelForm):
-    date = forms.DateTimeField(
-        input_formats=['%Y-%m-%dT%H:%M'],
-        widget=forms.DateTimeInput(
-            attrs={
-                'type': 'datetime-local',
-                'class': 'form-model-date'
-            }
-        )
-    )
-    class Meta:
-        model = MainPageContent
-        fields = ['chapter', 'content', 'date', 'author']
-
