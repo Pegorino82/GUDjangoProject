@@ -56,6 +56,7 @@
                             {% block small_menu_items %}
                             {% endblock %}
                             <li><a class="menu_item" href="{% url 'contactsapp:contacts' %}">Contacts</a></li>
+                            <li><a class="menu_item" href="{% url 'basketapp:basket' %}">Basket</a></li>
                             {% block small_menu_mainpage %}
                             {% endblock %}
 
@@ -117,6 +118,7 @@
                             {% endblock %}
                         </li>
                         <li><a class="menu_item" href="{% url 'contactsapp:contacts' %}">Contacts</a></li>
+                        <li><a class="menu_item" href="{% url 'basketapp:basket' %}">Basket</a></li>
                             {% block large_menu_mainpage %}
                             {% endblock %}
                     </ul>
