@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'customers',
     'myshopadmin',
     'basket',
+    'authapp'
 ]
 
 MIDDLEWARE = [

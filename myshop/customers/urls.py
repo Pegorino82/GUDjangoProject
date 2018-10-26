@@ -5,7 +5,7 @@ from customers import views
 app_name = 'customersapp'
 
 urlpatterns = [
-    path('', views.login_view, name='login_view'),
+    path('', views.login_view, name='customer'),
     path('create/', views.create_customer, name='create_customer'),
     path('update/<int:pk>/', views.update_customer, name='update_customer'),
     path('detail/<int:pk>/', views.detail_customer, name='detail_customer'),

@@ -30,4 +30,5 @@ urlpatterns = [
     path('customer/', include('customers.urls')),
     path('images/', include('images.urls')),
     path('basket/', include('basket.urls')),
+    path('auth/', include('authapp.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
