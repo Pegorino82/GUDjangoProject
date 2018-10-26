@@ -8,10 +8,15 @@ from products.forms import ProductModelForm
 
 
 def catalog(request):
+
+    categories = Category.objects.all()
+    categories_paginator = Paginator(categories, 4)
+    categories_page = request.GET.get('page')
+    categories_items = categories_paginator.get_page(categories_page)
     context = {
-        'categories': Category.objects.all(),
-        'products': Product.objects.all(),
-        'limit_products': Product.get_limit(5)
+        'categories': categories_items,
+        'all_categories': Category.objects.all(),
+        'limit_products': Product.get_limit(2)
     }
 
     return render(request, 'products/catalog.html', context)

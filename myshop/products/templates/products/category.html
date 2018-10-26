@@ -10,6 +10,7 @@
 {% endblock %}
 
 {% block style_css %}
+<link rel="stylesheet" href="{% static 'products/styles/paginator.css' %}">
 {% endblock %}
 
 {% block small_menu_items %}
@@ -47,6 +48,9 @@
         {% endfor %}
     </div>
 </div>
+
+{% include 'products/components/pagination.html' with results=products %}
+
 {% endblock %}
 
 {% block bootstrap_js %}

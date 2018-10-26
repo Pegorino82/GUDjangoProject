@@ -52,6 +52,8 @@
 
                             <li><a class="menu_item" href="{% url 'articlesapp:list' %}">Main</a></li>
                             <li><a class="menu_item" href="{% url 'customersapp:customer' %}">Customer</a></li>
+                            <li><a class="menu_item" href="{% url 'productsapp:list' %}">Products</a></li>
+                            <li><a class="menu_item" href="{% url 'categoriesapp:list' %}">Categories</a></li>
                             <li><a class="menu_item" href="{% url 'productsapp:catalog' %}">Catalog</a></li>
                             {% block small_menu_items %}
                             {% endblock %}
@@ -113,6 +115,8 @@
                     <ul>
                         <li><a class="menu_item" href="{% url 'articlesapp:list' %}">Main</a></li>
                         <li><a class="menu_item" href="{% url 'customersapp:customer' %}">Customer</a></li>
+                        <li><a class="menu_item" href="{% url 'productsapp:list' %}">Products</a></li>
+                        <li><a class="menu_item" href="{% url 'categoriesapp:list' %}">Categories</a></li>
                         <li><a class="menu_item" href="{% url 'productsapp:catalog' %}">Catalog</a>
                             {% block large_menu_items %}
                             {% endblock %}

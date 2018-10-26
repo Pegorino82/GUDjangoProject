@@ -10,11 +10,12 @@
 {% endblock %}
 
 {% block style_css %}
+<link rel="stylesheet" href="{% static 'products/styles/paginator.css' %}">
 {% endblock %}
 
 {% block small_menu_items %}
 <ul class="submenu">
-    {% for category in categories %}
+    {% for category in all_categories %}
     <li><a href="{% url 'categoriesapp:category' category=category.name %}">{{category.name}}</a></li>
     {% endfor %}
 </ul>
@@ -25,7 +26,7 @@
 
 {% block large_menu_items %}
 <ul class="submenu">
-    {% for category in categories %}
+    {% for category in all_categories %}
     <li><a href="{% url 'categoriesapp:category' category=category.name %}">{{category.name}}</a></li>
     {% endfor %}
 </ul>
@@ -35,6 +36,7 @@
 {% endblock %}
 
 {% block right_content %}
+{% include 'products/components/pagination.html' with results=categories %}
 {% for category in categories %}
     <div class="category_products">
         <a href="{% url 'categoriesapp:category' category=category.name %}">
@@ -55,6 +57,9 @@
         </div>
     </div>
 {% endfor %}
+
+{% include 'products/components/pagination.html' with results=categories %}
+
 {% endblock %}
 
 {% block bootstrap_js %}

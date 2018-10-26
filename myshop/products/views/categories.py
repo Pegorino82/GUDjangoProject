@@ -10,10 +10,14 @@ from products.forms import CategoryModelForm
 
 def category(request, category):
     category_id = Category.objects.get(name=category).id
+    products = Product.objects.filter(category=category_id).order_by('-id')
+    products_paginator = Paginator(products, 4)
+    products_page = request.GET.get('page')
+    products_items = products_paginator.get_page(products_page)
 
     result = {
         'category': category,
-        'products': Product.objects.filter(category=category_id).order_by('-id'),
+        'products': products_items,
         'categories': Category.objects.all()
     }
 

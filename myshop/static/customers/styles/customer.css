@@ -38,50 +38,24 @@
     src: url("../fonts/Raleway_Black.ttf")
 }
 
-.form-model {
 
-}
-
-.form-model-label {
-    width: 100px;
-}
-
-.form-model-input {
-    width: 200px;
-}
-
-.author_small_card {
-    height: 250px;
-}
-
-.author-photo {
+.link_button {
     display: block;
-    float: left;
-    width: 150px;
-}
-
-.author-info {
-    padding-left: 15px;
-    float: left;
-    font-family: "Roboto Black Italic", sans-serif;
-}
-
-.author-info label {
-    min-width: 70px;
-}
-
-.author-info .name {
-    /*display: block;*/
+    height: 50px;
+    background-color: #fff51f;
+    font-family: "Raleway Black", sans-serif;
     font-size: 14px;
-    max-height: 2.5em;
-    overflow: hidden;
-    color: #333333;
+    color: #000000;
+    text-decoration: none;
+    box-sizing: border-box;
+    text-align: center;
+    border-radius: 5%;
+    min-width: 120px;
+    padding: 0 10px;
+    line-height: 50px;
 }
 
-.author-info .lastname {
-    /*display: block;*/
-    font-size: 18px;
-    max-height: 2.5em;
-    overflow: hidden;
-    color: #333333;
+.link_button:hover {
+    background-color: #15d30e;
+    text-decoration: none;
 }
