@@ -10,7 +10,8 @@
 {% endblock %}
 
 {% block style_css %}
-<link rel="stylesheet" href="{% static 'products/styles/forms.css' %}">
+<!--<link rel="stylesheet" href="{% static 'products/styles/forms.css' %}">-->
+<link rel="stylesheet" href="{% static 'products/styles/paginator.css' %}">
 {% endblock %}
 
 {% block small_menu_items %}
@@ -30,13 +31,56 @@
 {% endblock %}
 
 {% block right_content %}
-{% for object in results %}
 <div class="main_section">
     <div class="main_section_header">
-        {{ object }}
+        {{ results.0 }}
     </div>
 </div>
-{% endfor %}
+<div class="row products_table">
+    {% for object in results %}
+    <div class="col-md-4 col-sm-6 col-xs-12 product_cell">
+        <div class="product_card {{object.product_marker|default_if_none:''}}">
+            <img class="product_img" src="{{ object.image.img.url }}" alt="">
+            <div class="name_price">
+                <div class="product_name">
+                    {{ object.name|title }}
+                </div>
+                <div class="product_price">
+                    <div class="now_price">
+                        {{ object.currency }} {{ object.now_price }}
+                    </div>
+                    {% if object.old_price %}
+                    <div class="old_price">
+                        {{ object.currency }} {{ object.old_price }}
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<ul class="django-pagination">
+    {% if results.has_previous %}
+    <li class="django-pagination__control">
+        <a class="link_button" href="?page={{results.previous_page_number}}"><< Prev</a>
+    </li>
+    {% endif %}
+
+    <li class="django-pagination__control">
+        <div class="link_button" style="font-size: 18px">
+            {{ results.number }} / {{ results.paginator.num_pages }}
+        </div>
+    </li>
+
+    {% if results.has_next %}
+    <li class="django-pagination__control">
+        <a class="link_button" href="?page={{results.next_page_number}}">Next >></a>
+    </li>
+    {% endif %}
+</ul>
+
 {% endblock %}
 
 {% block bootstrap_js %}

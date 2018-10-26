@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+from django.core.paginator import Paginator
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
@@ -42,6 +42,18 @@ class ModelListProduct(ListView):
     model = Product
     template_name = 'products/list.html'
     context_object_name = 'results'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super(ModelListProduct, self).get_context_data(**kwargs)
+        context['results'] = self.items
+        return context
+
+    def get(self, request, *args, **kwargs):
+        query = self.model.objects.all()
+        paginator = Paginator(query, 2)
+        page = request.GET.get('page')
+        self.items = paginator.get_page(page)
+        return super(ModelListProduct, self).get(request, *args, **kwargs)
 
 
 class ModelDetailProduct(DetailView):
