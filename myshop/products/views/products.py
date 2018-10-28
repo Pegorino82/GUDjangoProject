@@ -10,13 +10,13 @@ from products.forms import ProductModelForm
 def catalog(request):
 
     categories = Category.objects.all()
-    categories_paginator = Paginator(categories, 4)
+    categories_paginator = Paginator(categories, 3)
     categories_page = request.GET.get('page')
     categories_items = categories_paginator.get_page(categories_page)
     context = {
         'categories': categories_items,
         'all_categories': Category.objects.all(),
-        'limit_products': Product.get_limit(2)
+        'limit_products': Product.get_limit(3)
     }
 
     return render(request, 'products/catalog.html', context)
@@ -55,7 +55,7 @@ class ModelListProduct(ListView):
 
     def get(self, request, *args, **kwargs):
         query = self.model.objects.all()
-        paginator = Paginator(query, 2)
+        paginator = Paginator(query, 3)
         page = request.GET.get('page')
         self.items = paginator.get_page(page)
         return super(ModelListProduct, self).get(request, *args, **kwargs)

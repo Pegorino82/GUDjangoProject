@@ -1,19 +1,27 @@
-from django.shortcuts import render, HttpResponseRedirect, get_object_or_404
+from django.shortcuts import render, HttpResponseRedirect, reverse, get_object_or_404
+from django.contrib.auth.decorators import login_required
 
 from basket.models import Basket
 from products.models import Product
 
 
+@login_required(login_url='/auth/login/')
 def basket(request):
     template_name = 'basket/basket.html'
-
     bascket = Basket.objects.filter(user=request.user)
-
     return render(request, template_name, {'basket': bascket})
 
+
+@login_required(login_url='/auth/login/')
 def add_product(request, **kwargs):
     pk = kwargs.get('pk')
     prod = Product.objects.get(pk=pk)
+
+    # if 'login' in request.META.get('HTTP_REFERER'):
+    #     print('*'*100)
+    #     print('login in request.META')
+    #     print('*'*100)
+    #     return HttpResponseRedirect(reverse('productsapp:product', kwargs={'category': prod.category, 'pk': pk}))
 
     old_basket = Basket.objects.filter(product=prod, user=request.user)
     if old_basket:
@@ -23,20 +31,23 @@ def add_product(request, **kwargs):
         new_basket = Basket(product=prod, user=request.user)
         new_basket.quantity += 1
         new_basket.save()
-
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
+
+@login_required(login_url='/auth/login/')
 def remove_product(request, **kwargs):
     pk = kwargs.get('pk')
     prod = Product.objects.get(pk=pk)
-
     old_basket = Basket.objects.filter(product=prod, user=request.user)
-    if old_basket:
+    if old_basket and old_basket[0].quantity > 0:
         old_basket[0].quantity -= 1
         old_basket[0].save()
-    else:
-        new_basket = Basket(product=prod, user=request.user)
-        new_basket.quantity -= 1
-        new_basket.save()
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
+
+@login_required(login_url='/auth/login/')
+def delete_product(request, **kwargs):
+    pk = kwargs.get('pk')
+    prod = Basket.objects.get(pk=pk)
+    prod.delete()
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))

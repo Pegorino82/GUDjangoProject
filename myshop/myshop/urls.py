@@ -19,6 +19,11 @@ from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
 
+router = [
+    path('categories/', include('products.endpoints.categories')),
+    path('products/', include('products.endpoints.products')),
+]
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('myshopadmin/', include('myshopadmin.urls')),
@@ -31,4 +36,5 @@ urlpatterns = [
     path('images/', include('images.urls')),
     path('basket/', include('basket.urls')),
     path('auth/', include('authapp.urls')),
+    path('api/', include(router)),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

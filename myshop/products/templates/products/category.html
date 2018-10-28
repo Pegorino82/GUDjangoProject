@@ -43,7 +43,9 @@
     <div class="row products_table">
         {% for product in products %}
          <div class="col-md-4 col-sm-6 col-xs-12 product_cell">
-             {% include 'products/components/product.html' with prd_ctgry=category prd_id=product.id prd=product %}
+            <a href="{% url 'productsapp:product' category=product.category pk=product.id %}">
+                {% include 'products/components/product.html' with prd=product %}
+            </a>
         </div>
         {% endfor %}
     </div>

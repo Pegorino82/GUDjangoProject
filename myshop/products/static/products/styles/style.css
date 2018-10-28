@@ -473,6 +473,7 @@
     box-sizing: border-box;
     position: relative;
     margin-bottom: 15px;
+    height: 436px;
 }
 
 .product_img {

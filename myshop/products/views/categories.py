@@ -38,6 +38,7 @@ class ModelListCategoriy(ListView):
     model = Category
     template_name = 'products/list.html'
     context_object_name = 'results'
+    # paginate_by = 3 # в этом случае в шаблоне обращаемся к контекстной переменной page_object
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super(ModelListCategoriy, self).get_context_data(**kwargs)
@@ -46,13 +47,12 @@ class ModelListCategoriy(ListView):
 
     def get(self, request, *args, **kwargs):
         query = self.model.objects.all()
-        paginator = Paginator(query, 6)
+        paginator = Paginator(query, 3)
         page = request.GET.get('page')
         self.items = paginator.get_page(page)
         return super(ModelListCategoriy, self).get(request, *args, **kwargs)
 
 
-# not used
 class ModelDetailCategory(DetailView):
     model = Category
     template_name = 'products/detail.html'

@@ -12,7 +12,7 @@ from .categories import (
     category,
     ModelCreateCategory,
     ModelListCategoriy,
-    # ModelDetailCategory,
+    ModelDetailCategory,
     ModelUpdateCategory,
     # ModelDeleteCategory
 )

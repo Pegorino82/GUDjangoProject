@@ -12,23 +12,29 @@ def login_view(request):
     # TODO проверить, есть ли зарегистрированный пользователь
     # TODO если есть, то сначала сделать отметку в бд о его выходе
     success_url = reverse_lazy('customersapp:customer')
-    notification = {}
+    next = request.GET.get('next') if 'next' in request.GET.keys() else ''  # TODO
+    notification = {'next': next}  # TODO
     if request.method == 'POST':
         usr_name = request.POST.get('username')
         psw = request.POST.get('password')
-        if request.POST.get('login'):
-            user = authenticate(username=usr_name, password=psw)
-            if user and user.is_active:
-                auth_act = AuthApp.objects.create(user=user)
-                auth_act.login = datetime.datetime.now()
-                auth_act.save()
-                login(request, user)
-                return redirect(success_url)
-            else:
-                notification = {
+        # if request.POST.get('login'):
+        user = authenticate(username=usr_name, password=psw)
+        if user and user.is_active:
+            auth_act = AuthApp.objects.create(user=user)
+            auth_act.login = datetime.datetime.now()
+            auth_act.save()
+            login(request, user)
+            if 'next' in request.POST.keys():  # TODO
+                return redirect(request.POST['next'])  # TODO
+            else:  # TODO
+                return redirect(success_url)  # TODO
+        else:
+            notification.update(
+                {
                     'user_name': usr_name,
                     'warn': 'incorrect username or password'
                 }
+            )
     return render(request, 'authapp/login.html', notification)
 
 

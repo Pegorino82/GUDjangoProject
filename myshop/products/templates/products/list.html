@@ -41,24 +41,12 @@
 <div class="row products_table">
     {% for object in results %}
     <div class="col-md-4 col-sm-6 col-xs-12 product_cell">
-        <div class="product_card {{object.product_marker|default_if_none:''}}">
-            <img class="product_img" src="{{ object.image.img.url }}" alt="">
-            <div class="name_price">
-                <div class="product_name">
-                    {{ object.name|title }}
-                </div>
-                <div class="product_price">
-                    <div class="now_price">
-                        {{ object.currency }} {{ object.now_price }}
-                    </div>
-                    {% if object.old_price %}
-                    <div class="old_price">
-                        {{ object.currency }} {{ object.old_price }}
-                    </div>
-                    {% endif %}
-                </div>
-            </div>
-        </div>
+        {% if object.category %}
+        <a href="{% url 'productsapp:detail' pk=object.id %}">
+        {% endif %}
+        {% include 'products/components/product.html' with prd=object %}
+        </a>
+
     </div>
     {% endfor %}
 </div>

@@ -47,24 +47,7 @@
     <div class="row products_table">
 
          <div class="col-md-6 col-sm-6 col-xs-12 product_cell">
-             <div class="product_card {{product.product_marker|default_if_none:''}}">
-        <img class="product_img" src="{{ product.image.img.url }}" alt="">
-        <div class="name_price">
-            <div class="product_name">
-                {{ product.name|title }}
-            </div>
-            <div class="product_price">
-                <div class="now_price">
-                    {{ product.currency }} {{ product.now_price }}
-                </div>
-                {% if product.old_price %}
-                <div class="old_price">
-                    {{ product.currency }} {{ product.old_price }}
-                </div>
-                {% endif %}
-            </div>
-        </div>
-    </div>
+             {% include 'products/components/product.html' with prd=product %}
         </div>
         <div class="col-md-6 col-sm-6 col-xs-12 product_cell">
              <div class="product_describe">

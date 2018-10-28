@@ -5,6 +5,7 @@ from products.views import (
     ModelCreateCategory,
     ModelListCategoriy,
     ModelUpdateCategory,
+    ModelDetailCategory
 )
 
 app_name = 'categoriesapp'
@@ -14,4 +15,5 @@ urlpatterns = [
     path('create/', ModelCreateCategory.as_view(), name='create'),
     path('list/', ModelListCategoriy.as_view(), name='list'),
     path('update/<int:pk>/', ModelUpdateCategory.as_view(), name='update'),
+    path('detail/<int:pk>/', ModelDetailCategory.as_view(), name='detail'),
 ]
