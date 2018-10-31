@@ -1,5 +1,8 @@
-from django.shortcuts import render, HttpResponseRedirect, reverse, get_object_or_404
+from django.shortcuts import render, HttpResponseRedirect,reverse, get_object_or_404
 from django.contrib.auth.decorators import login_required
+
+from django.http import JsonResponse
+from django.template.loader import render_to_string
 
 from basket.models import Basket
 from products.models import Product
@@ -9,7 +12,7 @@ from products.models import Product
 def basket(request):
     template_name = 'basket/basket.html'
     bascket = Basket.objects.filter(user=request.user)
-    return render(request, template_name, {'basket': bascket})
+    return render(request, template_name, {'basket': bascket, 'id': 4})
 
 
 @login_required(login_url='/auth/login/')
@@ -51,3 +54,30 @@ def delete_product(request, **kwargs):
     prod = Basket.objects.get(pk=pk)
     prod.delete()
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+@login_required(login_url='/auth/login/')
+def edit_basket(request, **kwargs):
+    pk = kwargs.get('pk')
+    quantity = kwargs.get('quantity')
+
+    if request.is_ajax():
+        quantity = int(quantity)
+        new_basket_item = Basket.objects.get(pk=pk)
+
+        if quantity > 0:
+            new_basket_item.quantity = quantity
+            new_basket_item.save()
+        else:
+            new_basket_item.delete()
+
+        basket_items = Basket.objects.filter(user=request.user).order_by('product.category')
+
+        content = {
+            'basket_items': basket_items,
+        }
+
+        result = render_to_string('basket/basket.html', content)
+
+        return JsonResponse({'result': result})
+
+
