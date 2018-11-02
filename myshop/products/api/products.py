@@ -46,10 +46,21 @@ def rest_product_create(request):
 
 def rest_product_list(request):
     query_set = get_list_or_404(Product)
-    data = [i.__dict__ for i in query_set]
-    for d in data:
-        d.pop('_state')
-        d.pop('id')
+    data = list(
+        map(
+            lambda itm: {
+                'name': itm.name,
+                'short_text': itm.short_text[:50] + '...' if len(itm.short_text) > 50 else itm.short_text,
+                'now_price': itm.now_price,
+                'old_price': itm.old_price,
+                'currency': itm.currency,
+                'product_marker': itm.product_marker.corner,
+                'category': itm.category.name,
+                'image': itm.image.img.url
+            },
+            query_set
+        )
+    )
 
     return JsonResponse(
         {
@@ -61,9 +72,17 @@ def rest_product_list(request):
 def rest_product_detail(request, **kwargs):
     pk = kwargs.get('pk')
     obj = get_object_or_404(Product, id=pk)
-    data = obj.__dict__
-    data.pop('_state')
-    data.pop('id')
+    data = {
+                'name': obj.name,
+                'short_text': obj.short_text[:50] + '...' if len(obj.short_text) > 50 else obj.short_text,
+                'long_text': obj.short_text[:50] + '...' if len(obj.long_text) > 50 else obj.long_text,
+                'now_price': obj.now_price,
+                'old_price': obj.old_price,
+                'currency': obj.currency,
+                'product_marker': obj.product_marker.corner,
+                'category': obj.category.name,
+                'image': obj.image.img.url
+            }
 
     return JsonResponse(
         {
