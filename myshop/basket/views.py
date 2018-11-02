@@ -20,12 +20,6 @@ def add_product(request, **kwargs):
     pk = kwargs.get('pk')
     prod = Product.objects.get(pk=pk)
 
-    # if 'login' in request.META.get('HTTP_REFERER'):
-    #     print('*'*100)
-    #     print('login in request.META')
-    #     print('*'*100)
-    #     return HttpResponseRedirect(reverse('productsapp:product', kwargs={'category': prod.category, 'pk': pk}))
-
     old_basket = Basket.objects.filter(product=prod, user=request.user)
     if old_basket:
         old_basket[0].quantity += 1
@@ -56,28 +50,22 @@ def delete_product(request, **kwargs):
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 @login_required(login_url='/auth/login/')
-def edit_basket(request, **kwargs):
-    pk = kwargs.get('pk')
-    quantity = kwargs.get('quantity')
-
+def edit_basket(request, pk, quantity, **kwargs):
     if request.is_ajax():
         quantity = int(quantity)
         new_basket_item = Basket.objects.get(pk=pk)
-
         if quantity > 0:
             new_basket_item.quantity = quantity
             new_basket_item.save()
         else:
             new_basket_item.delete()
-
         basket_items = Basket.objects.filter(user=request.user).order_by('product.category')
-
         content = {
             'basket_items': basket_items,
         }
-
-        result = render_to_string('basket/basket.html', content)
+        result = render_to_string('basket/components/product.html', content)
 
         return JsonResponse({'result': result})
+        # return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
