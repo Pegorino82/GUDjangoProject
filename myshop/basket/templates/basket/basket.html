@@ -41,12 +41,9 @@ Basket
 
     <a class="remove_one" href="{% url 'basketapp:delete_product' pk=item.id %}">del</a>
 </div>
-
 {% endfor %}
 <div id="basket_js" style="float: left">
-    <span>
-        {{ quantity }}
-    </span>
+
 </div>
 {% endblock %}
 
@@ -55,6 +52,9 @@ Basket
 <script src="{% static 'basket/js/jquery-3.3.1.js' %}"></script>
 <script src="{% static 'basket/js/basket_scripts.js' %}"></script>
 <script type="text/javascript">
-    axios.get('http://127.0.0.1:8000/api/basket/list/').then(renderData)
+    axios.get('http://127.0.0.1:8000/api/basket/list/')
+    .then(renderData)
 </script>
+
+
 {% endblock %}
