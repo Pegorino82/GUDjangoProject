@@ -10,7 +10,6 @@ from products.models import Product
 class ModelCreateProduct(CreateView):
     template_name = 'myshopadmin/create.html'
 
-
     # def get_context_data(self, **kwargs):
     #     '''not used here'''
     #     context = super(ModelCreateProduct, self).get_context_data(**kwargs)
@@ -129,6 +128,14 @@ def index(request):
     for item in all_apps:
         prep_dict[item._meta.__dict__.get('app_label')].append(item._meta.__dict__.get('model_name'))
 
-    context = {'results': prep_dict}
+    # context = {'results': prep_dict}
+    context = {
+        'results': OrderedDict(sorted({
+            'products': ('Product', 'Category', 'ProductMarker'),
+            'images': ('Image',),
+            'customers': ('Customer',),
+            'main': ('Author', 'MainPageContent')
+        }.items()))
+    }
 
     return render(request, 'myshopadmin/index.html', context)
