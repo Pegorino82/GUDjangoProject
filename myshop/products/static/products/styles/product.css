@@ -42,8 +42,6 @@
     display: block;
     width: 124px;
     height: 49px;
-    position: absolute;
-    right: 15px;
     background-color: #fff51f;
     font-family: "Raleway Black", sans-serif;
     font-size: 14px;
@@ -52,5 +50,7 @@
     padding: 18px 0 28px;
     box-sizing: border-box;
     text-align: center;
+    margin: 20px;
+
 }
 
