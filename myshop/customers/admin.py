@@ -12,9 +12,10 @@ class CustomerAdmin(admin.ModelAdmin):
     ]
 
     list_filter = [
-        'birth_date',
+        'is_staff',
         'is_active',
         'last_login',
+        'birth_date',
     ]
 
     search_fields = [
