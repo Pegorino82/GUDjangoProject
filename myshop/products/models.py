@@ -87,6 +87,10 @@ class Product(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
 
+    is_active = models.BooleanField(
+        default=True
+    )
+
     def __str__(self):
         return self.name
 
@@ -95,7 +99,7 @@ class Product(models.Model):
         categories = Category.objects.all()
         res = list()
         for cat in categories:
-            for prod in cls.objects.filter(category=cat.id)[:limit]:
+            for prod in cls.objects.filter(category=cat.id, is_active=True)[:limit]:
                 res.append(prod)
 
         return res
