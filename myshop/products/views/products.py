@@ -27,7 +27,7 @@ def product(request, category, pk):
     result = {
         'category': category,
         'pk': pk,
-        'product': Product.objects.get(id=pk),
+        'product': Product.objects.get(id=pk, is_active=True),
         'categories': Category.objects.all()
     }
 
@@ -46,31 +46,34 @@ class ModelCreateProduct(LoginRequiredMixin, CreateView):
 
 
 class ModelListProduct(ListView):
-    model = Product
+    # model = Product
+    queryset = Product.objects.filter(is_active=True)
     template_name = 'products/list.html'
     context_object_name = 'results'
 
-    def get_context_data(self, *, object_list=None, **kwargs):
+    def get_context_data(self, **kwargs):
         context = super(ModelListProduct, self).get_context_data(**kwargs)
         context['results'] = self.items
         return context
 
     def get(self, request, *args, **kwargs):
-        query = self.model.objects.all()
-        paginator = Paginator(query, 3)
+        # query = self.model.objects.all()
+        paginator = Paginator(self.queryset, 3)
         page = request.GET.get('page')
         self.items = paginator.get_page(page)
         return super(ModelListProduct, self).get(request, *args, **kwargs)
 
 
 class ModelDetailProduct(DetailView):
-    model = Product
+    # model = Product
+    queryset = Product.objects.filter(is_active=True)
     template_name = 'products/detail.html'
     context_object_name = 'product'
 
 
 class ModelUpdateProduct(LoginRequiredMixin, UpdateView):
-    model = Product
+    # model = Product
+    queryset = Product.objects.filter(is_active=True)
     template_name = 'products/update.html'
     form_class = ProductModelForm
     success_url = reverse_lazy('productsapp:catalog')
@@ -78,12 +81,23 @@ class ModelUpdateProduct(LoginRequiredMixin, UpdateView):
 
 
 class ModelDeleteProduct(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
-    model = Product
+    # model = Product
+    queryset = Product.objects.filter(is_active=True)
     template_name = 'products/delete.html'
-    success_url = reverse_lazy('productsapp:catalog')
+    success_url = reverse_lazy('productsapp:list')
     login_url = reverse_lazy('customersapp:customer')
 
     def test_func(self):
-        print('*' * 100)
-        print(self.request.user.is_staff)
         return self.request.user.is_staff
+
+    def post(self, request, *args, **kwargs):
+        pk = kwargs.get('pk')
+        self.obj = self.queryset.get(pk=pk)
+        self.obj.is_active = False
+        self.obj.save()
+
+        return super(ModelDeleteProduct, self).post(request)
+
+    # def get(self, request, *args, **kwargs):
+    #
+    #     return super(ModelDeleteProduct, self).post(request)
