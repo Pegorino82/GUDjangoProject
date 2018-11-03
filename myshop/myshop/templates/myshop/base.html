@@ -98,7 +98,7 @@
                 <img src="{{ user.avatar.url }}" alt="{{ user.username }}">
                 <span>{{ user.username }}</span>
             </div>
-            {% if user.is_staff == 1 %}
+            {% if user.is_staff %}
             <a class="adminbutton" href="{% url 'myshopadminapp:index' %}">AdminSite</a>
             {% endif %}
         </div>
