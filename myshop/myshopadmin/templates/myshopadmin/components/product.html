@@ -2,7 +2,11 @@
 
 
  <div class="product_card {{prd.product_marker|default_if_none:''}}">
-    <img class="product_img" src="{{ prd.image.img.url }}" alt="">
+    {% if prd.image %}
+        <img class="product_img" src="{{ prd.image.img.url }}" alt="">
+     {% elif prd.avatar %}
+        <img class="product_img" src="{{ prd.avatar.url }}" alt="">
+     {% endif %}
     <div class="name_price">
         <div class="product_name">
             {% if prd.name %}
@@ -11,6 +15,10 @@
                 {{ prd.title|title }}
             {% elif prd.corner %}
                 {{ prd.corner|title }}
+            {% elif prd.username %}
+                {{ prd.username|title }}
+            {% elif prd.chapter %}
+                {{ prd.chapter }} / {{ prd.author }}
             {% endif %}
         </div>
         <div class="product_price">
