@@ -54,6 +54,10 @@
                  {{ product.long_text }}
              </div>
             <a class="link-add-to-basket" href="{% url 'basketapp:add_product' pk=product.id %}">Add to basket</a>
+            {% if user.is_staff %}
+                <a class="link-add-to-basket" href="{% url 'productsapp:update' pk=product.id %}">Update</a>
+                <a class="link-add-to-basket" href="{% url 'productsapp:delete' pk=product.id %}">Delete</a>
+            {% endif %}
         </div>
 
     </div>
