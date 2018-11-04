@@ -23,8 +23,9 @@ Admin/List
         {% for item in results%}
             <div class="col-md-4 col-sm-6 col-xs-12 product_cell">
                 <a href="{% url 'myshopadminapp:detail' app=app model=model pk=item.pk %}">
-                {% include 'myshopadmin/components/product.html' with prd=item %}
+                {% include included_template with prd=item %}
                 </a>
+
             </div>
         {% endfor %}
     </div>

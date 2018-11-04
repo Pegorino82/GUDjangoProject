@@ -101,6 +101,7 @@ class ModelDetail(LoginRequiredMixin, DetailView):
         context['app'] = self._app
         context['model'] = self._model
         context['pk'] = self._pk
+        context['included_template'] = 'myshopadmin/components/{}.html'.format(self._model.lower())
         return context
 
 
@@ -120,6 +121,8 @@ class ModelList(LoginRequiredMixin, ListView):
         context = super(ModelList, self).get_context_data(**kwargs)
         context['app'] = self._app
         context['model'] = self._model
+        context['included_template'] = 'myshopadmin/components/{}.html'.format(self._model.lower())
+        # context['included_template'] = 'oooooooooooo'
         return context
 
 

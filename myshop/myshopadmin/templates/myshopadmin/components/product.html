@@ -1,25 +1,11 @@
 {% load static %}
 
 
- <div class="product_card {{prd.product_marker|default_if_none:''}}">
-    {% if prd.image %}
-        <img class="product_img" src="{{ prd.image.img.url }}" alt="">
-     {% elif prd.avatar %}
-        <img class="product_img" src="{{ prd.avatar.url }}" alt="">
-     {% endif %}
+<div class="product_card {{prd.product_marker|default_if_none:''}}">
+    <img class="product_img" src="{{ prd.image.img.url }}" alt="">
     <div class="name_price">
         <div class="product_name">
-            {% if prd.name %}
-                {{ prd.name|title }}
-            {% elif prd.title %}
-                {{ prd.title|title }}
-            {% elif prd.corner %}
-                {{ prd.corner|title }}
-            {% elif prd.username %}
-                {{ prd.username|title }}
-            {% elif prd.chapter %}
-                {{ prd.chapter }} / {{ prd.author }}
-            {% endif %}
+            {{ prd.name|title }}
         </div>
         <div class="product_price">
             <div class="now_price">
@@ -32,5 +18,5 @@
             {% endif %}
         </div>
     </div>
- </div>
+</div>
 
