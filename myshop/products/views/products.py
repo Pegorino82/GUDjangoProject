@@ -5,6 +5,8 @@ from django.core.paginator import Paginator
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
+
+from customers.mixins import AdminGroupRequired
 from products.models import Product, Category
 from products.forms import ProductModelForm
 
@@ -37,12 +39,13 @@ def product(request, category, pk):
                   )
 
 
-class ModelCreateProduct(LoginRequiredMixin, CreateView):
+class ModelCreateProduct(LoginRequiredMixin, AdminGroupRequired, CreateView):
     model = Product
     template_name = 'products/create.html'
     form_class = ProductModelForm
     success_url = reverse_lazy('productsapp:list')
     login_url = reverse_lazy('customersapp:customer')
+    redirect_url = reverse_lazy('productsapp:list')
 
 
 class ModelListProduct(ListView):
@@ -71,21 +74,23 @@ class ModelDetailProduct(DetailView):
     context_object_name = 'product'
 
 
-class ModelUpdateProduct(LoginRequiredMixin, UpdateView):
+class ModelUpdateProduct(LoginRequiredMixin, AdminGroupRequired, UpdateView):
     # model = Product
     queryset = Product.objects.filter(is_active=True)
     template_name = 'products/update.html'
     form_class = ProductModelForm
     success_url = reverse_lazy('productsapp:catalog')
     login_url = reverse_lazy('customersapp:customer')
+    redirect_url = reverse_lazy('productsapp:list')
 
 
-class ModelDeleteProduct(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+class ModelDeleteProduct(LoginRequiredMixin, UserPassesTestMixin, AdminGroupRequired,  DeleteView):
     # model = Product
     queryset = Product.objects.filter(is_active=True)
     template_name = 'products/delete.html'
     success_url = reverse_lazy('productsapp:list')
     login_url = reverse_lazy('customersapp:customer')
+    redirect_url = reverse_lazy('productsapp:list')
 
     def test_func(self):
         return self.request.user.is_staff
