@@ -43,6 +43,11 @@
         <a class="link_button" href="{% url 'authapp:logout_view' %}">Выйти</a>
     </div>
     {% endif %}
+    {% if user.is_staff or user.is_superuser %}
+    <div class="input-group">
+        <a class="link_button" href="{% url 'customersapp:list_customer' %}">Пользователи</a>
+    </div>
+    {% endif %}
 </div>
 {% endblock %}
 
