@@ -15,7 +15,7 @@ class CustomerModelForm(forms.ModelForm):
 
     class Meta:
         model = Customer
-        fields = ['username', 'password', 'birth_date', 'avatar']
+        fields = ['username', 'password', 'birth_date', '_avatar']
         widgets = {
             'username': forms.widgets.TextInput(
                 attrs={
