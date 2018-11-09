@@ -96,7 +96,7 @@ class ModelDeleteProduct(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         self.obj.is_active = False
         self.obj.save()
 
-        return super(ModelDeleteProduct, self).post(request)
+        return super(ModelDeleteProduct, self).post(request, *args, **kwargs)
 
     # def get(self, request, *args, **kwargs):
     #
