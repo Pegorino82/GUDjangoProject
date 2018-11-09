@@ -50,7 +50,7 @@ def logup_view(request):
             try:
                 customer = Customer(
                     username=usr_name,
-                    avatar=avatar
+                    _avatar=avatar
                 )
                 customer.is_active = True
                 customer.set_password(psw)
