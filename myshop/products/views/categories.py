@@ -4,6 +4,7 @@ from django.core.paginator import Paginator
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
+from customers.mixins import AdminGroupRequired
 from products.models import Category, Product
 from products.forms import CategoryModelForm
 
@@ -27,8 +28,9 @@ def category(request, category):
                   )
 
 
-class ModelCreateCategory(CreateView):
+class ModelCreateCategory(AdminGroupRequired, CreateView):
     model = Category
+    redirect_url = reverse_lazy('categoriesapp:list')
     template_name = 'products/create.html'
     form_class = CategoryModelForm
     success_url = reverse_lazy('categoriesapp:list')
@@ -59,15 +61,17 @@ class ModelDetailCategory(DetailView):
     context_object_name = 'results'
 
 
-class ModelUpdateCategory(UpdateView):
+class ModelUpdateCategory(AdminGroupRequired, UpdateView):
     model = Category
+    redirect_url = reverse_lazy('categoriesapp:list')
     template_name = 'products/update.html'
     form_class = CategoryModelForm
     success_url = reverse_lazy('categoriesapp:list')
 
 
 # not used
-class ModelDeleteCategory(DeleteView):
+class ModelDeleteCategory(AdminGroupRequired, DeleteView):
     model = Category
+    redirect_url = reverse_lazy('categoriesapp:list')
     template_name = 'products/delete.html'
     success_url = reverse_lazy('categoriesapp:list')
