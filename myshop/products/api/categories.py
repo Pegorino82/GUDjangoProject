@@ -26,7 +26,7 @@ def rest_category_list(request):
     result = {
         'next_url': f'{rout_url}?page={page.next_page_number()}' if page.has_next() else None,
         'previous_url': f'{rout_url}?page={page.previous_page_number()}' if page.has_previous() else None,
-        'page': paginator.num_pages,
+        'page': page.number,
         'count': paginator.count,
         'results': data
     }

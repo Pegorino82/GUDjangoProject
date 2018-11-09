@@ -46,7 +46,7 @@ def rest_product_create(request):
 
 
 def rest_product_list(request):
-    quantity_per_page = request.GET.get('quantity_per_page') if  request.GET.get('quantity_per_page') else 10
+    quantity_per_page = request.GET.get('quantity_per_page') if request.GET.get('quantity_per_page') else 10
     query_set = get_list_or_404(Product)
     paginator = Paginator(query_set, quantity_per_page)
     page_number = request.GET.get('page')
@@ -56,7 +56,8 @@ def rest_product_list(request):
         map(
             lambda itm: {
                 'name': itm.name,
-                'short_text': itm.short_text[:50] + '...' if (itm.short_text and len(itm.short_text) > 50) else itm.short_text,
+                'short_text': itm.short_text[:50] + '...' if (
+                        itm.short_text and len(itm.short_text) > 50) else itm.short_text,
                 'now_price': itm.now_price,
                 'old_price': itm.old_price,
                 'currency': itm.currency,
@@ -71,13 +72,12 @@ def rest_product_list(request):
     result = {
         'next_url': f'{rout_url}?page={page.next_page_number()}' if page.has_next() else None,
         'previous_url': f'{rout_url}?page={page.previous_page_number()}' if page.has_previous() else None,
-        'page': paginator.num_pages,
+        'page': page.number,
         'count': paginator.count,
         'results': data
     }
 
     return JsonResponse(result)
-
 
 
 def rest_product_detail(request, **kwargs):
