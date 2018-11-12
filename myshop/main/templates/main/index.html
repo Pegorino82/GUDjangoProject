@@ -25,7 +25,6 @@
 {% endblock %}
 
 {% block right_content %}
-
     {% for content in results %}
         {% include 'main/components/article.html' with content=content object=content.author %}
     {% endfor %}
