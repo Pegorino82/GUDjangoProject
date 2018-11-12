@@ -11,13 +11,12 @@
 
 {% block style_css %}
 <link rel="stylesheet" href="{% static 'products/styles/paginator.css' %}">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+<script src="{% static 'products/js/categories.js' %}"></script>
 {% endblock %}
 
 {% block small_menu_items %}
 <ul class="submenu">
-    {% for category in all_categories %}
-    <li><a href="{% url 'categoriesapp:category' category=category.name %}">{{category.name}}</a></li>
-    {% endfor %}
 </ul>
 {% endblock %}
 
@@ -25,10 +24,7 @@
 {% endblock %}
 
 {% block large_menu_items %}
-<ul class="submenu">
-    {% for category in all_categories %}
-    <li><a href="{% url 'categoriesapp:category' category=category.name %}">{{category.name}}</a></li>
-    {% endfor %}
+<ul class="submenu" id="js">
 </ul>
 {% endblock %}
 
@@ -59,6 +55,11 @@
 {% endfor %}
 
 {% include 'products/components/pagination.html' with results=categories %}
+
+<script>
+    axios.get('http://127.0.0.1:8000/api/categories/list/')
+        .then(renderCategories);
+</script>
 
 {% endblock %}
 
