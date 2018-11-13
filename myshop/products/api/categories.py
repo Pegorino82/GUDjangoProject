@@ -11,7 +11,7 @@ def rest_category_list(request):
     paginator = Paginator(query_set, quantity_per_page)
     page_number = request.GET.get('page')
     page = paginator.get_page(page_number)
-    rout_url = reverse('rest_products:rest_list')
+    rout_url = reverse('rest_categories:rest_list')
     data = list(
         map(
             lambda itm: {
@@ -27,6 +27,7 @@ def rest_category_list(request):
         'next_url': f'{rout_url}?page={page.next_page_number()}' if page.has_next() else None,
         'previous_url': f'{rout_url}?page={page.previous_page_number()}' if page.has_previous() else None,
         'page': page.number,
+        'pages_all': int(paginator.count) // int(quantity_per_page) + 1,
         'count': paginator.count,
         'results': data
     }
