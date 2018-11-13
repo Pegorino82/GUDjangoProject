@@ -17,7 +17,6 @@
     {% block bootstrap_css %}
     {% endblock %}
     <link rel="stylesheet" href="{% static 'myshop/styles/style.css' %}">
-
     {% block style_css %}
     {% endblock %}
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
@@ -188,6 +187,9 @@
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
+    {% block js_bottom %}
+    {% endblock %}
+
     {% block bootstrap_js %}
     {% endblock %}
 
