@@ -7,9 +7,8 @@ const Category = ({name}) =>
 
 const renderCategories = res => {
     let menuItems = res.data.results.map(Category).join('');
-    console.log(menuItems);
+    // console.log(menuItems);
     // let getMenu = document.getElementsByClassName('submenu');
     let getMenu = document.getElementById('js');
-    // console.log(getMenu);
-    getMenu.innerHTML = menuItems;
+    getMenu.innerHTML += menuItems;
 };
