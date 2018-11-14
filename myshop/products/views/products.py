@@ -51,7 +51,7 @@ class ModelCreateProduct(LoginRequiredMixin, AdminGroupRequired, CreateView):
 class ModelListProduct(ListView):
     # model = Product
     queryset = Product.objects.filter(is_active=True)
-    template_name = 'products/list.html'
+    template_name = 'products/products_list.html'
     context_object_name = 'results'
 
     def get_context_data(self, **kwargs):
