@@ -10,5 +10,6 @@ const renderCategories = res => {
     // console.log(menuItems);
     // let getMenu = document.getElementsByClassName('submenu');
     let getMenu = document.getElementById('js');
+    getMenu.innerHTML = '';
     getMenu.innerHTML += menuItems;
 };
