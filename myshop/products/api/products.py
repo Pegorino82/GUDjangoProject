@@ -46,7 +46,7 @@ def rest_product_create(request):
 
 
 def rest_product_list(request):
-    quantity_per_page = request.GET.get('quantity_per_page') if request.GET.get('quantity_per_page') else 10
+    quantity_per_page = request.GET.get('quantity_per_page') if request.GET.get('quantity_per_page') else 3
     query_set = get_list_or_404(Product)
     paginator = Paginator(query_set, quantity_per_page)
     page_number = request.GET.get('page')
@@ -74,6 +74,7 @@ def rest_product_list(request):
         'previous_url': f'{rout_url}?page={page.previous_page_number()}' if page.has_previous() else None,
         'page': page.number,
         'count': paginator.count,
+        'pages_all': int(paginator.count) // int(quantity_per_page) + 1,
         'results': data
     }
 
