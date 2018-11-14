@@ -38,7 +38,7 @@ class ModelCreateCategory(AdminGroupRequired, CreateView):
 
 class ModelListCategoriy(ListView):
     model = Category
-    template_name = 'products/list.html'
+    template_name = 'products/categories_list.html'
     context_object_name = 'results'
     # paginate_by = 3 # в этом случае в шаблоне обращаемся к контекстной переменной page_object
 
