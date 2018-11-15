@@ -65,6 +65,12 @@
 
 .product-info,
 .quantity {
+    padding-left: 5px;
+    font-family: "Roboto Black Italic", sans-serif;
+    vertical-align: center;
+}
+
+.total_price {
     padding-left: 15px;
     font-family: "Roboto Black Italic", sans-serif;
     vertical-align: center;
