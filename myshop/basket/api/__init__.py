@@ -1,1 +1,1 @@
-from .basket import rest_basket_detail, rest_basket_list
+from .basket import rest_basket_detail, rest_basket_list, rest_basket_update

@@ -31,6 +31,24 @@ def rest_basket_detail(request):
     return JsonResponse(
         {
             'results': data,
-            'json': json.dumps(int(pk))
+        }
+    )
+
+
+
+def rest_basket_update(request):
+    pk = request.GET.get('id')
+    obj = get_object_or_404(Basket, id=pk)
+    for key, val in request.GET.items():
+        setattr(obj, key, val)
+    obj.save()
+
+    data = obj.__dict__
+    data.pop('_state')
+    data.pop('id')
+
+    return JsonResponse(
+        {
+            'results': data
         }
     )
