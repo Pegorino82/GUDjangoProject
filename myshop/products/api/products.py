@@ -104,6 +104,7 @@ def rest_product_detail(request, **kwargs):
 
 
 # ?name=Api_updated
+# TODO foreign keys update
 def rest_product_update(request, **kwargs):
     pk = kwargs.get('pk')
     obj = get_object_or_404(Product, id=pk)
