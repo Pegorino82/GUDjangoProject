@@ -31,7 +31,7 @@ function getJson(apiUrl) {
     let HttpReq = new XMLHttpRequest(); // a new request
     HttpReq.open("GET", apiUrl, false);
     HttpReq.send(null);
-    // console.log(JSON.parse(HttpReq.responseText));
+    console.log(JSON.parse(HttpReq.responseText));
     return JSON.parse(HttpReq.responseText);
 }
 
