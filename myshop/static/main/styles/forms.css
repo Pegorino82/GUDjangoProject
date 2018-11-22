@@ -50,6 +50,10 @@
     width: 200px;
 }
 
+.author_small_card {
+    height: 250px;
+}
+
 .author-photo {
     display: block;
     float: left;
@@ -62,8 +66,12 @@
     font-family: "Roboto Black Italic", sans-serif;
 }
 
+.author-info label {
+    min-width: 70px;
+}
+
 .author-info .name {
-    display: block;
+    /*display: block;*/
     font-size: 14px;
     max-height: 2.5em;
     overflow: hidden;
@@ -71,7 +79,7 @@
 }
 
 .author-info .lastname {
-    display: block;
+    /*display: block;*/
     font-size: 18px;
     max-height: 2.5em;
     overflow: hidden;

@@ -8,6 +8,7 @@
 
 {% block bootstrap_css %}
 {% endblock %}
+
 {% block style_css %}
 <link rel="stylesheet" href="{% static 'images/styles/images.css' %}">
 {% endblock %}
@@ -25,19 +26,18 @@
 {% endblock %}
 
 {% block right_content %}
-    <div class="main_section_header">
-        Images
-    </div>
-    <div class="row products_table">
-        {% for image in results %}
-         <div class="col-md-4 col-sm-6 col-xs-12 product_cell">
-             {% include 'images/components/image.html' with image=image %}
-         </div>
-        {% endfor %}
-    </div>
-
+<div class="main_section_header">
+    Images
+</div>
+<div class="row products_table">
+    {% for image in results %}
+     <div class="col-md-4 col-sm-6 col-xs-12 product_cell">
+         {% include 'images/components/image.html' with image=image %}
+     </div>
+    {% endfor %}
+</div>
 {% endblock %}
 
 {% block bootstrap_js %}
-    <script src="{% static 'products/packages/bootstrap-3.3.7-dist/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'images/packages/bootstrap-3.3.7-dist/js/bootstrap.min.js' %}"></script>
 {% endblock %}

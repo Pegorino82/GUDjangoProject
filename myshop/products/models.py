@@ -1,9 +1,11 @@
 from django.db import models
 from django.db.models import Q, QuerySet
 
+from images.models import Image
+
 
 class Category(models.Model):
-    title = models.CharField(
+    name = models.CharField(
         max_length=150,
         unique=True)
     short_text = models.CharField(
@@ -14,7 +16,7 @@ class Category(models.Model):
     modified = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.title
+        return self.name
 
 
 class ProductMarker(models.Model):
@@ -27,6 +29,18 @@ class ProductMarker(models.Model):
 
     def __str__(self):
         return self.corner
+
+
+def default_image():
+    return Image.objects.get(name='default')
+
+
+def default_product_marker():
+    return ProductMarker.objects.get(corner='None')
+
+
+def default_category():
+    return Category.objects.get(name='New category')
 
 
 class Product(models.Model):
@@ -57,37 +71,35 @@ class Product(models.Model):
 
     product_marker = models.ForeignKey(
         'products.ProductMarker',
-        on_delete=models.PROTECT
+        on_delete=models.PROTECT,
+        default=default_product_marker
     )
     category = models.ForeignKey(
         'products.Category',
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        default=default_category
     )
     image = models.ForeignKey(
         'images.Image',
-        on_delete=models.PROTECT
+        on_delete=models.PROTECT,
+        default=default_image
     )
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
 
+    is_active = models.BooleanField(
+        default=True
+    )
+
     def __str__(self):
         return self.name
-
-    # @classmethod
-    # def get_limit(cls, limit):
-    #     categories = Category.objects.all()
-    #     res = {key: [] for key in dict.fromkeys(categories).keys()}
-    #     for cat in categories:
-    #         res[cat].append(cls.objects.filter(category=cat.id)[:limit])
-    #
-    #     return res
 
     @classmethod
     def get_limit(cls, limit):
         categories = Category.objects.all()
         res = list()
         for cat in categories:
-            for prod in cls.objects.filter(category=cat.id)[:limit]:
+            for prod in cls.objects.filter(category=cat.id, is_active=True)[:limit]:
                 res.append(prod)
 
         return res

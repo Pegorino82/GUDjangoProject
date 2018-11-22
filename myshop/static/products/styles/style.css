@@ -473,6 +473,8 @@
     box-sizing: border-box;
     position: relative;
     margin-bottom: 15px;
+    width: 250px;
+    height: 425px;
 }
 
 .product_img {

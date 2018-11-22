@@ -4,7 +4,6 @@
     <div class="main_section_header">
         {{ content.chapter }}
     </div>
-
      <div class="main_section_img">
         {% if object.photo %}
         <img class="main_section_img" src="{{ object.photo.url }} " alt="{{ content.author }}">
@@ -14,11 +13,9 @@
         </div>
         {% endif %}
     </div>
-
      <div class="row main_section_content">
          {{ content.content }}
      </div>
-
     <span>By {{ content.author }},</span>
     <span>{{ content.created.date }}</span>
 </div>

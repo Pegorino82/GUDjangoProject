@@ -8,6 +8,7 @@
 
 {% block bootstrap_css %}
 {% endblock %}
+
 {% block style_css %}
 <link rel="stylesheet" href="{% static 'main/styles/forms.css' %}">
 {% endblock %}
@@ -15,10 +16,19 @@
 {% block small_menu_items %}
 {% endblock %}
 
+{% block small_menu_mainpage %}
+{% endblock %}
+
 {% block large_menu_items %}
 {% endblock %}
 
+{% block large_menu_mainpage %}
+{% endblock %}
+
 {% block right_content %}
+<div class="author_small_card">
+    {% include 'main/components/author.html' with object=object %}
+</div>
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {% for err in form.not_field_errors %}
@@ -26,11 +36,6 @@
         {{ err }}
     </span>
     {% endfor %}
-
-    <div>
-    {% include 'main/components/author.html' with object=object %}
-    </div>
-
     <div class="form-model">
         <input type="submit" value="DELETE">
     </div>
@@ -38,4 +43,5 @@
 {% endblock %}
 
 {% block bootstrap_js %}
+<script src="{% static 'main/packages/bootstrap-3.3.7-dist/js/bootstrap.min.js' %}"></script>
 {% endblock %}

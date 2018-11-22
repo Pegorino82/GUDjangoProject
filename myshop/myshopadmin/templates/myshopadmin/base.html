@@ -51,8 +51,8 @@
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
 
-                            <li><a class="menu_item" href="{% url 'mainapp:index' %}">Main</a></li>
-                            <li><a class="menu_item" href="{% url 'customersapp:login_view' %}">Customer</a></li>
+                            <li><a class="menu_item" href="{% url 'articlesapp:list' %}">Main</a></li>
+                            <li><a class="menu_item" href="{% url 'customersapp:customer' %}">Customer</a></li>
                             <li><a class="menu_item" href="{% url 'productsapp:catalog' %}">Catalog</a></li>
                             {% block small_menu_items %}
 
@@ -64,7 +64,7 @@
                 </div><!-- /.container-fluid -->
             </nav>
 
-            <a href="{% url 'mainapp:index' %}" class="logo hidden-xs"></a>
+            <a href="{% url 'articlesapp:list' %}" class="logo hidden-xs"></a>
 
             <div class="name-avatar">
                 <img src="{{ user.avatar.url }}" alt="{{ user.username }}">

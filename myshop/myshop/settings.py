@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'images',
     'customers',
     'myshopadmin',
-
+    'basket',
+    'authapp'
 ]
 
 MIDDLEWARE = [
@@ -75,6 +76,14 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'myshop.wsgi.application'
+
+# Email settings
+
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = '25'
+EMAIL_HOST_USER = None
+EMAIL_HOST_PASSWORD = None
+EMAIL_USE_SSL = False
 
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases

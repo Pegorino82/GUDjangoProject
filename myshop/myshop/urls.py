@@ -19,12 +19,23 @@ from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
 
+router = [
+    path('categories/', include('products.endpoints.categories')),
+    path('products/', include('products.endpoints.products')),
+    path('basket/', include('basket.endpoints.basket')),
+]
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('myshopadmin/', include('myshopadmin.urls')),
-    path('', include('main.urls')),
+    path('authors/', include('main.urls.authors')),
+    path('articles/', include('main.urls.articles')),
     path('contacts/', include('contacts.urls')),
-    path('products/', include('products.urls')),
+    path('products/', include('products.urls.products')),
+    path('categories/', include('products.urls.categories')),
     path('customer/', include('customers.urls')),
     path('images/', include('images.urls')),
+    path('basket/', include('basket.urls')),
+    path('auth/', include('authapp.urls')),
+    path('api/', include(router)),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
